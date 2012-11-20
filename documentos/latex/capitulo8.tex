@@ -1,1 +1,47 @@
-\chapter{Anexo 1.}
+\chapter{Anexo. Manual de Instalación OpenNI/OpenCV}
+
+\section{Introducción}
+
+El objetivo de este manual es explicar la instalación del {\it driver} OpenNi y del framework OpenCV, 
+para la utilización del dispositivo kinect, en cualquier equipo de cómputo, 
+en este documento se citan los requerimientos previos con los que el usuario debe contar. 
+También se explican los pasos necesarios para una correcta instalación.
+El {\it driver} y framework son multiplataforma, con soporte para Linux, Windows ó Mac OS.
+Este manual sólo describe el proceso de instalación y configuración para una distribución de Linux.
+El manual incluye las versiones de los paquetes que se usaron, otras versiones pueden no funcionar
+ pero puede servir como previo para la búsqueda de información.
+ 
+ 
+\section{Requisitos previos}
+
+Tener instalada una distribución de Linux. 
+Este manual fue probado con Ubuntu 11.04 en 32 bits.
+
+\subsection{Sistema Operativo}
+
+En caso de no tener una distrubución Linux los pasos básicos se pueden resumir en:
+\begin{enumerate}
+\item Se inserta el disco y se procede a instalar
+\item Después nos dará una serie de opciones, de la cual usaremos la opción de algo mas
+\item Se escoge la partición mas grande  con la que se cuenta y se reduce el espacio
+\item Nos quedara un espacio libre, el cual fue reducido en la partición, este espacio se usara para
+crear una nueva partición.
+\item Se crea la partición, que sea de tipo lógica
+\item Por último, se le da instalar y seguimos las instrucciones del asistente
+\end{enumerate}
+
+\subsection{Gestor de paquetes}
+
+Las distribuciones incluyen gestores de paquetes que ayudan en la instalación de bibliotecas de funciones
+pero en caso de no tener un gestor instalador se pueden seguir los siguientes pasos:
+
+\begin{enumerate}
+\item Se abre una terminal.
+\item Se escribe el siguiente comando:
+\begin{verbatim}
+sudo apt-get install synaptic
+\end{verbatim}
+\end{enumerate}
+
+
+ 
