@@ -1,66 +1,291 @@
 %% Todas las palabras extranjeras con 
 %% itÃ¡licas {\it texto en itÃ¡licas}
 
-\chapter{IntroducciÃ³n}
+\chapter{Introducción}
 
 El presente trabajo muestra el desarrollo de un sistema {\it multi-touch} %% todas las palabras extranjeras
- para crear figuras bÃ¡sicas bidimensionales.
+ para crear figuras básicas bidimensionales.
 
-%% Esta parte estÃ¡ pendiente de revisar.... no sÃ© que es lo que decidieron al respecto.
-La interacciÃ³n con el sistema se contarÃ¡ con objetos fÃ­sicos que representan herramientas para dibujar, ademÃ¡s se cuenta con otros objetos como herramientas bÃ¡sicas para la ediciÃ³n del dibujo. 
+%% Esta parte estÃ¡ pendiente de revisar.... no sÃ© que es lo que decidieron al respecto.  --- va seguir existiendo las tags nadamas se simplicaron, el numero de ellas, ya es menor
+La interacción con el sistema se contará con objetos físicos que representan herramientas para dibujar, además se cuenta con otros objetos como herramientas básicas para la edición del dibujo. \\
 
 
-El desarrollo del sistema estÃ¡ enfocado en la integraciÃ³n de tecnologÃ­as, 
-en Ã©ste caso particular se utilizarÃ¡ la herramienta Kinectâ„¢ de MicrosoftÂ® conectada a una computadora personal, 
-ademÃ¡s el sistema contarÃ¡ con reconocimiento de patrones para la selecciÃ³n de herramientas de dibujo o de ediciÃ³n del mismo.
-
+El desarrollo del sistema está enfocado en la integración de tecnologías, 
+en éste caso particular se utilizará la herramienta {\it Kinect}\texttrademark de {\it Microsoft}\textregistered  conectada a una computadora personal, 
+además el sistema contará con reconocimiento de patrones para la selección de herramientas de dibujo o de edición del mismo.
 %%
-%%
-\section{Kinect}
+\section{Kinect\texttrademark}
 
-Kinectâ„¢ es un dispositivo que combina una cÃ¡mara RGB, un sensor de profundidad y un arreglo de micrÃ³fonos[1].
+{\it Kinect}\texttrademark es un dispositivo que combina una cámara {\it RGB}, un sensor de profundidad y un arreglo de micrófonos[1].\\
 
-Como podemos observar en la Tabla 1, se listan los elementos principales de Kinect junto con su funciÃ³n.
+Como podemos observar en la Tabla \ref{tab:1}, se listan los elementos principales de {\it Kinect}\texttrademark junto con su función.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{4.8cm}|p{11cm}|}
+\hline
+{\bf Elemento} & {\bf Función}\\ \hline
+Arreglo de micrófonos& Detecta las voces y las aísla del ruido ambiental\\ \hline
+Proyector de luz infrarroja & Dispara luz infrarroja.\\ \hline
+Sensor de profundidad cámara infrarroja & Detecta la luz que lanza el proyector de luz infrarroja y genera un canal extra al {\it RGB} que trae información de la profundidad de la escena y es similar a un mapa de disparidad estéreo.\\ \hline
+Motor de inclinación & Ajustar hacía donde están dirigidas las cámaras.\\ \hline
+Salida de adaptador {\it USB} $2.0$ & Conectar un cable para conectar vía {\it USB} el dispositivo.\\ \hline
+Cámara {\it RGB} & Reconocer los tres colores básicos. Rojo, verde y azul.\\ \hline
+\end{tabular}
+\caption{Elementos Principales de {\it Kinect}\texttrademark [2].}
+\label{tab:1}
+\end{table}
+
+Además cuentan con:
+\begin{itemize}
+    \item {\it Triple Core PowerPC $970$, $3.2$GHz, Hyperthreaded, $2$ threads/core}.
+    \item {\it $500$ MHz ATI graphics card}.
+    \item {\it $512$ MB RAM}.
+\end{itemize}
 
 \section{OpenNI}
 
+Se utiliza {\it OpenNI framework (Open Source Natural Interaction)} versión $1.3.4.6$ que es una {\it API} desarrollada por {\it OpenNI organization},  que provee una interfaz para dispositivos que ofrecen una interfaz natural para operar los componentes del {\it middleware}[3], en nuestro sistema lo utilizamos para poder comunicar la computadora personal con {\it Kinect}\texttrademark y así utilizar de la mejor manera para lo que se diseño el dispositivo {\it Kinect}\texttrademark, que es eliminar los dispositivos físicos para controlar, en este caso, la computadora personal.\\
+
+Posee una biblioteca de código abierto para poder trabajar con casi todas las capacidades de {\it Kinect}\texttrademark en {\it Windows}, {\it Linux} y {\it Mac}.
+
 \section{OpenCV}
+
+{\it OpenCV (Open Source Computer Vision Library)} Es una biblioteca {\it GPL}, orientada a la computación visual en tiempo real, utilizada principalmente en el campo de la Interacción Computadora - Humano por sus siglas en inglés {\it HCI (Human Computer Interaction)} creada y soportada por {\it Intel} desde 1999, y tiene amplia documentación.\\
+
+Actualmente trabajamos con la versión $2.3.1$ de la librería {\it OpenCV}.\\
+
+Una de las características más importantes de {\it OpenCV} es que las funciones están totalmente optimizadas para los procesadores de arquitectura {\it Intel}. Existen versiones para diferentes arquitecturas de procesadores y para diferentes sistemas operativos[4].
 
 \section{Reconocimiento de Patrones}
 
-\section{Etiquetas} %% Anteriormente TAG's
+Para intentar definir que es el Reconocimiento de Patrones (RP) definiremos algunos conceptos[5].\\
+
+{\bf Reconocimiento:} Proceso de clasificación de un objeto en una o más clases.\\
+
+{\bf Objeto:} Es un concepto con el cual representamos los elementos sujetos a estudio. Pueden ser concretos o abstractos.\\
+
+{\bf Patrón:} Tras los procesos de segmentación, extracción de características y descripción, cada objeto queda representado por una colección (posiblemente ordenada y estructurada) de descriptores.\\
+
+{\bf Clase:} Es un conjunto de objetos. Al agrupa en clases, se puede hacer de dos formas distintas:
+\begin{itemize}
+    \item {\it Por pertenencias duras:} Un objeto pertenece o no a una clase.
+    \item {\it Por pertenencias difusas:} Los objetos pertenecen parcialmente a una clase. Existen clases con intersecciones no vacías.
+\end{itemize}
+
+Existen varios intentos para definir al reconocimiento de patrones.
+\begin{itemize}
+    \item La disciplina dedicada a la clasificación de objetos y el pronóstico de fenómenos.[6]
+    \item Rama del conocimiento, de carácter multidisciplinario, cuyo objeto de estudio son los procesos de identificación, caracterización, clasificación y reconstrucción sobre conjuntos de objetos o fenómenos, así como el desarrollo de teorías, tecnologías y metodologías relacionadas con dichos procesos.[6]
+    \item Es la ciencia que se ocupa de los procesos sobre ingeniería, computación y matemáticas relacionados con objetos físicos y/o abstractos, con el propósito de extraer información que permita establecer propiedades de o entre conjuntos de dichos objetos.[6]
+\end{itemize}
+
+Con respecto al reconocimiento de patrones, se cuenta con objetos físicos los cuáles  hacen la función de botones permitiendo eliminar éstos de la interfaz, éstos objetos tienen asignada una imagen binaria que denominamos {\it tag}(etiqueta), así la cámara de {\it Kinect}\texttrademark captura la imagen del escenario, entonces el sistema procesa esa captura donde si se encuentra uno de los objetos físicos se decodifica la imagen y se activa la acción que se tenga asignada a dicha {\it tag}. Algunas de las {\it tags} tienen más de una acción que se activan con un giro en cierto ángulo esto hace que cambie la función que al principio tenia  designada.
+
+\section{Etiquetas (Tag´s)} %% Anteriormente TAG's
+
+Denominamos {\it tag's}(etiquetas) a un conjunto de imágenes binarias en colores blanco y negro que indica el uso de una herramienta.\\
+
+Analizamos tres tipos de imágenes binarias candidatas, las cuales son: {\it reacTIVision fiducials}, Código {\it QR} y {\it ARToolKit Marker}.
 
 \subsection{reacTIVision}
 
-\subsection{CÃ³digo QR}
+Son marcadores especiales (Figura \ref{fig:1.1}) que se desarrollaron en conjunto con el sistema {\it reacTIVision} que es un {\it software} creado especialmente para el rastreo de éstos marcadores que a grandes rasgos son imágenes binarias, específicamente, en blanco y negro.
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.4]{ImagenesDocumentacion/reactableTag.ps}
+\caption{Ejemplos de marcadores para reacTable.}
+\label{fig:1.1}
+\end{figure}
+
+Para la identificación de cada marcador se basa en una región grafica adyacente y los rectángulos de delimitación. El método combina coincidencias de patrones binarios de gráficos topológicos (Figura \ref{fig:1.2}) para el reconocimiento y la identificación con simples técnicas geométricas para calcular la ubicación y orientación de los marcadores[7].
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.7]{ImagenesDocumentacion/topologiaArbol.ps}
+\caption{Algunas simples topologías y su correspondiente gráfico de región adyacente.}
+\label{fig:1.2}
+\end{figure}
+\newpage
+Se utilizan algoritmos genéticos para la identificación de cada marcador, para más detalles consultar[7].\\
+
+Éstos marcadores están disponibles en PDF para su impresión así como el sistema {\it reacTIVision} en la página del proyecto[8] y no es necesario producir nuevos marcadores.
+
+\subsection{Código QR}
+
+El código de barras de respuesta rápida por sus siglas en inglés {\it QR code*}  ({\it Quick Response Barcode}, Figura \ref{fig:1.3}) es un sistema que permite almacenar información en un código de barras bidimensional, esto quiere decir que tiene un patrón de arriba hacía abajo, de izquierda a derecha, y puede almacenar alrededor de $7,000$ dígitos (véase Tabla \ref{tab:2}) mucho más que un código de barras convencional, además con la ayuda de una cámara y un programa especial podemos recuperar la información de cada código. Éste código esta estandarizado {\it ISO/IEC 18004}.
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.5]{ImagenesDocumentacion/codigoQR.ps}
+\caption{Ejemplo de Código QR.}
+\label{fig:1.3}
+\end{figure}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}%{|p{5cm}|p{12cm}|}%
+\hline
+Numérico & Máximo $7,089$ caracteres.\\ \hline
+Alfanumérico & Máximo $4,296$ caracteres.\\ \hline
+Binario & Máximo $2,953$ caracteres.\\ \hline
+Kanji/Kana & Máximo $1,817$ caracteres.\\ \hline
+\end{tabular}
+\caption{Capacidad de datos del código QR.}
+\label{tab:2}
+\end{table}
+
+Existen versiones del código QR desde la $1$ hasta la $40$ y cada una tiene diferentes números de módulos (módulo se refiere a los puntos blancos y negros que conforman el código QR)[9].\\
+
+\hfill{\tiny * QR code es una marca registrada por DENSO WAVE INCORPORATED}\\
+
+Tiene la capacidad de corrección de errores (véase Tabla \ref{tab:3}), si una parte del código está dañada, manchada o doblada puede ser interpretado de igual forma.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|cc|}%{|p{5cm}|p{5cm}|}%
+\hline
+\multicolumn{2}{c}{QR Code Error Correction Capability}\\ \hline %\rowcolor{red!20}
+Level L & Approx.$7\%$\\ \hline
+Level M & Approx.$15\%$\\ \hline
+Level Q & Approx.$25\%$\\ \hline
+Level H & Approx.$30\%$\\ \hline
+\end{tabular}
+\caption{Capacidad de corrección de errores Código QR[9].}
+\label{tab:3}
+\end{table}
+\newpage
+La decodificación del código {\it QR} puede seguir varios algoritmos a continuación se describe un algoritmo general que puede utilizarse para algunos código de barras  en 2D.
+
+\begin{enumerate}
+    \item Binarización de la imagen.\\
+Método de Otsu[10].
+    \item Corrección de la inclinación.
+    \item Corrección  geométrica  de la imagen.
+    \item Obtención de los cuatro vértices de la imagen.
+    \item Obtención de los nuevos valores	 de los vértices.
+    \item Obtener el valor en cada nuevo pixel.
+    \item Normalización de la imagen.
+\end{enumerate}
+
+Existen distintos sistemas que ofrecen la creación de códigos {\it QR} así como la decodificación del mismo como {\it ZXing}[11].
+
 \subsection{ARToolkit}
 
-\section{MetodologÃ­a}
+Son plantillas de forma cuadrada, que se componen de cuadrado negro con un cuadrado blanco cuatro veces más pequeño que su centro y un dibujo sencillo en el interior del cuadrado blanco, como se muestra en la  figura \ref{fig:1.4}.
 
-El desarrollo del proyecto se realizÃ³ aplicando el modelo incremental. %% Falta refenrencia al modelo incremental  
-Esta metodologÃ­a tiene la ventaja de ser dinÃ¡mica y flexible, ademÃ¡s permite usar las salidas de las etapas precedentes, 
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=1.5]{ImagenesDocumentacion/arToolkit.ps} 
+\caption{Ejemplo de ARToolKit Marker.}
+\label{fig:1.4}
+\end{figure}
+
+Para identificación de la platilla está basada en la detección de las esquinas con ayuda del algoritmo de {\it fast pose estimation}[12]. Los pasos para el tratamiento de estas plantillas son los siguientes:
+
+\begin{enumerate}
+    \item La imagen capturada se transforma a una imagen binaria.
+    \item Identificamos el marco de color negro.
+    \item Extraemos los patrones del dibujo que se encuentra en el interior del marco negro.
+    \item Almacenamos los patrones.
+    \item Repetimos los primeros tres pasos.
+    \item Comparamos los patrones extraídos con los almacenados.
+    \item Aplicamos  funcionalidad de la imagen.
+\end{enumerate}
+
+\section{Metodología}
+
+El desarrollo del proyecto se realizó aplicando el modelo incremental.[13] %% Falta refenrencia al modelo incremental -- no falta ahi abajo esta la referencia del libro Pressman de Ing de SW 
+Esta metodología tiene la ventaja de ser dinámica y flexible, además permite usar las salidas de las etapas precedentes, 
 como entradas en las etapas sucesivas y facilita corregir cualquier error detectado o llevar a cabo mejoras en 
-los distintos productos que se generan a lo largo de su aplicaciÃ³n[13]. 
+los distintos productos que se generan a lo largo de su aplicación[13].\\ 
 
-El uso de esta metodologÃ­a dentro del desarrollo del proyecto proporcionÃ³:
+Esta metodología, se basa en la metodología en cascada.El uso de esta metodología dentro del desarrollo del proyecto proporcioná:
 \begin{itemize}
-\item DefiniciÃ³n de actividades a llevarse a cabo en el tiempo de realizaciÃ³n del Trabajo Terminal.
-\item UnificaciÃ³n de criterios en la organizaciÃ³n para el desarrollo del proyecto.
-\item Puntos de control y revisiÃ³n.
-\item Seguimiento de secuencias ascendentes o descendentes en las etapas del desarrollo.
-\item Cumplimiento de etapas o fases en paralelo, por lo que es mÃ¡s flexible que la estructurada.
+	\item Definición de actividades a llevarse a cabo en el tiempo de realización del Trabajo Terminal.
+	\item Unificación de criterios en la organización para el desarrollo del proyecto.
+	\item Puntos de control y revisión.
+	\item Seguimiento de secuencias ascendentes o descendentes en las etapas del desarrollo.
+	\item Cumplimiento de etapas o fases en paralelo, por lo que es más flexible que la estructurada.
 \end{itemize}
 
 \subsection{Paradigma}
 
+El paradigma será Orientado a Objetos, porque la {\it API} usada de {\it OpenCV} está en lenguaje  {\it C++}, que permite la manipulación de objetos, ya que primero definen objetos, para luego enviarles mensajes solicitándoles que realicen sus métodos por sí mismos.\\
+
+El uso del paradigma proporciona:
+\begin{itemize}
+    \item No modela la realidad, sino la forma en que las personas comprenden y procesan la realidad.
+    \item Es un proceso ascendente basado en una abstracción de clases en aumento.
+    \item Se basa en identificación de objetos, definición y organización de librerías de clases, y creación de macros para aplicaciones específicas.
+    \item Utiliza menor cantidad de código.
+    \item Es reutilizable.
+\end{itemize}
+
 \section{Objetivos}
 
-\subsection{General}
-\subsection{Particulares}
+\subsection{General}%%falta esta parte de agregar
+\subsection{Particulares} %%
 
-\section{JustificaciÃ³n}
+\section{Justificación}
+
+Una de las principales características sobre la dificultad del desarrollo de los sistemas {\it multi-touch} basado en tecnología "reciente" en el caso de {\it Kinect}\texttrademark era la falta de documentación fiable al momento de plantear este proyecto (Octubre - Diciembre 2011) ya que no se contaba con drivers capaces de explotar todas las características de {\it Kinect}\texttrademark ni un entorno de desarrollo estable por parte de {\it MS} o de la comunidad de {\it software} libre. El desarrollo de éste sistema busca contribuir a la creación de documentación formal que permitirá que futuras generaciones tengan mayor cantidad de fuentes fiables y por lo tanto se interesen por la creación de sistemas basados en movimientos, logrando ser un aportador más al crecimiento de dichos entornos.\\
+
+Además, permitir que los alumnos de la Escuela Superior de Cómputo que se encuentren cursando o tengan interés en el reconocimiento de patrones o semejantes, trabajen con los actuales dispositivos de captura de imagen, siendo en nuestro caso {\it Kinect}\texttrademark de {\it Microsoft}\textregistered, dejando a un lado su complejidad y crear un mayor interés, buscando cambiar el enfoque de dicha herramienta en donde el alumno no la vea como un proyecto de Trabajo Terminal sino como prácticas semestrales, lo que brindará mayor competitividad e integración de nuevas tecnologías.\\
+
+Esta integración de tecnologías ofrece una alternativa al {\it mouse} y al teclado pudiendo así evitar enfermedades ya conocidas causadas por éstos dispositivos como lo es el síndrome de túnel carpiano[14]. 
 
 \subsection{Estado del arte}
 
+Actualmente no se cuenta con un sistema de dibujo como el que se pretende realizar, a la fecha de la documentación del estado del arte (Marzo 2012) existen otros trabajos que también manejan {\it Kinect\texttrademark, OpenCV y OpenNI}, elementos con los que se llevará acabo el desarrollo de nuestro sistema, de los cuales vamos a mencionar algunos a continuación.\\
 
+Gracias a la aparición de {\it drivers} que permiten la interacción entre el dispositivo {\it Kinect}\texttrademark, que primeramente era exclusivo para la consola de videojuegos {\it Xbox} $360$ de {\it Microsoft}\textregistered, y la computadora, se comenzaron a realizar aplicaciones que permiten al usuario tener una interacción más natural, permitiendo ser ellos mismos el control de la aplicación. Debído a que era una tecnología "reciente" existía poca documentación formal acerca de proyectos relacionados.
 
+\subsubsection{Hand Tracking - Kinect with OpenCV 2.2 and OpenNI}
+
+Es una aplicación sencilla que en primera instancia reconoce la mano de un usuario, como  un punto permitiendo realizar trazos a mano alzada (Figura \ref{fig:1.5}), la aplicación puede  cambiar el punto con que se realizar el trazo entre una mano y otra juntando las manos para volverlas a separar así queda realizado el cambio. Esta aplicación también permite la  identificación del cuerpo (Figura \ref{fig:1.6}) con lo que se toman a ambas manos como puntos de  interés, uno de ellos se encarga de realizar el trazo y con el otro se puede seleccionar el color.
+
+\begin{figure}[h1]
+\centering
+\includegraphics[0cm,0cm][18cm,6cm]{ImagenesDocumentacion/handTracking.ps} %[scale=1.5]
+\caption{Hand Tracking.}
+\label{fig:1.5}
+\end{figure}
+
+La relación que existe entre este trabajo y el que se pensó realizar es que ambos  deben poder generar dibujos identificando un punto de interes con el cual se van a hacer los trazos además de seleccionar el color y agregar otra funcionalidades. Éste sistema no cuenta con una documentación y lo único que se puede obtener es lo que se visualiza en un video subido a la red[15].
+
+\begin{figure}[h1]
+\centering
+\includegraphics[0cm,0cm][16.5cm,7cm]{ImagenesDocumentacion/reconocimientoCuerpo.ps} %[scale=1.5]
+\caption{Reconocimiento del cuerpo.}
+\label{fig:1.6}
+\end{figure}
+
+\subsubsection{Kinect Active Projection Mapping}
+
+Es una aplicación que trabaja con {\it Kinect\texttrademark, OpenCV y OpenNI}, además comparte la idea de mantener un área de trabajo y una proyeción, de tal modo el usuario interactúa directamente sobre el área designada (Figura \ref{fig:1.7}).\\
+
+En este proyecto se utiliza el kinect para reconocer el cuerpo, la posición de las manos principalmente. El sistema crea un efecto visual en  sobre las manos y entre ellas por medio de una imagen que es proyectada sobre una pantalla detras de el usuario[16].\\
+
+Esta aplicación ha sido desarrollada en el {\it Computer Fusion Laboratory} como parte del programa de ingenieria de la {\it Temple University}. La página donde se dan más detalles del proyecto se encuentra aún en construcción. Y por el momento los recursos no están disponibles.
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.8]{ImagenesDocumentacion/proyeccionManos.ps} %[0cm,0cm][16.5cm,4.5cm]
+\caption{Proyección de imágen sobre un área de trabajo.}
+\label{fig:1.7}
+\end{figure}
+
+\subsubsection{Aldebaran Nao Kinect Controller}
+
+Es un proyecto donde se controla por medio de {\it Kinect}\texttrademark a un robot (Figura \ref{fig:1.8}), organismo autónomo programable y de mediana estatura desarrollado por la empresa Francesa {\it Aldebaran Robotics}. Esta aplicación ha sido desarrollada en {\it Technical University Bergakademie Freiberg} en Alemania por Erik Berger y Heni Ben Amor. Existe información adicional de este proyecto en la página oficial de la universidad [17], Pero se encuentra en idioma Alemán.\\
+
+Este proyecto no tiene mucha relación en cuanto a la funcionalidad del trabajo que se desea realizar, pero se considera por el hecho de también emplear los elementos que utilizaremos en nuestro sistema. 
+
+\begin{figure}[h1]
+\centering
+\includegraphics[0cm,0cm][16.5cm,7cm]{ImagenesDocumentacion/interaccionRobot.ps} %[scale=0.8]
+\caption{Interacción con robot automáta programable.}
+\label{fig:1.8}
+\end{figure}
