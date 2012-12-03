@@ -4,3 +4,135 @@ Este capítulo explica el desarrollo del sistema en cada uno de los módulos.
 Se explica como se hizo el reconocimiento de las etiquetas ({\it Tags}) y el seguimiento del dedo ({\it fingertracking}) 
 para poder realizar trazos.
 
+\section{Editor de dibujo básico.}
+
+La realización de este módulo no llevo mayor problema, ya que la {\it API (OpenCV)} que utilizamos, ofrece algunas funciones tanto para el dibujo de ventanas para la interfaz como para el dibujo de líneas y rectángulos, que fueron utilizadas para que se realizaran los trazos.\\\\
+
+Para visualizar los trazos se tomaron dos puntos, un inicial y un final, que por medio de estos; para los trazos de línea recta (función {\it cvLine}) y rectángulo (función {\it cvRectangle}) se pasan como parámetros a las funciones respectivas, mientras que para las demás figuras se toman los mismos dos puntos de inicio-fin y se procedio a hacer los cálculos descritos en la sección de análisis y descripción de procesos del módulo uno. De esta manera se determinan puntos que se unen con líneas con las funciones que provee {\it OpenCV: cvPoint y cvLine}(Figura \ref{fig:4.1}).
+
+\begin{figure}[h1]
+\centering
+\includegraphics[0cm,0cm][15cm,6.8cm]{ImagenesDocumentacion/desEditorBasico.ps} %[scale=0.9]
+\caption{Editor de dibujo básico}
+\label{fig:4.1}
+\end{figure}
+
+\section{Reconocimiento de trazos a mano alzada.}
+
+Para realizar el reconocimiento de los trazos con el {\it Kinect}\texttrademark, se calculan las características de la mano del usuario con los métodos {\it cvMoments y cvHuMoments}.\\\\
+
+Los momentos son propiedades numéricas que se  pueden obtener de una determinada imagen. Tienen en cuenta todos los pixeles de la imagen, no solo los bordes\cite{Belkasim}\cite{Wavelet}.\\\\
+
+El momento que se utilizó fue el momento central que hace referencia al área (m00).\\\\
+
+Una vez calculados los momentos, calculamos los momentos invariantes de {\it Hu}, un conjunto de siete momentos invariantes. Estos momentos se mantienen invariantes ante rotaciones, traslaciones y cambios de escalas de objetos. Se define mediante una serie de ecuaciones\cite{Wavelet}. Del cual solo usamos el momento invariante uno, correspondiente a la rotación.\\\\
+
+Con el momento de área y el primer invariante de {\it Hu} (m00 y hu1) comparamos estos datos para poder identificar el dedo índice y conforme a esto se realiza los trazos. Lo que se le llama un reconocimiento de patrones supervisado.
+
+\section{Implementación de herramientas físicas.}
+
+Esta sección, se enfoca en explicar cual fue la tag elegida de las analizadas y cómo se hace el reconocimiento de la misma para la selección de alguna opción del editor de dibujo.
+
+\subsection{Elección de tag}
+
+La {\it tag} elegida contiene rasgos mínimos de los {\it reacTIVision fiductials}. La cual está formada por dos círculos uno contenido dentro del otro, podemos notar que el circulo interior se encuentra separado del perímetro del circulo exterior, evitando colocarlo en el centro, esto permitirá identificar si la tag sufrió alguna rotación, así saber que funciones (color, dibujos, selección o zoom)  se están trabajando y por consecuente ver reflejado esta funcionalidad en el área de trabajo.\\\\
+
+La {\it tag} está formada por dos caras, la inferior que contiene los rasgos para realizar el reconocimiento y la superior que contiene pequeños dibujo representativos en la funcionalidad del sistema.
+
+\newpage
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.1]{ImagenesDocumentacion/tagsFull.ps} %[0cm,0cm][15cm,6.8cm]
+\caption{Tag's de herramientas}
+\label{fig:4.2}
+\end{figure}
+
+\subsection{Reconocimiento de Tag's}
+Para hacer el reconocimiento de la imagen se realizaron los siguientes procesos.
+
+\begin{enumerate}
+	\item La captura de la imagen es con ayuda del {\it Kinect}\texttrademark, al cual se le indica que la imagen a capturar será del tipo {\it RGB}.
+	\item La imagen capturada la cambiamos a grises con ayuda del método {\it cvCvtColor}, el cual multiplica la tonalidad  del  pixel con los siguientes valores R*0.299,  G*0.587 y B*0.114 los cuales se suman y se asignan al mismo pixel \cite{upenn}.
+	\item La imagen ya en escalas grises se le aplica un suavizado {\it Gaussiano}, para realizar este proceso se utilizó el método {\it cvSmooth} al cual se le indica que sea de tipo gaussiano con {\it CV\_GAUSSIAN}.\\\\
+
+El operador de suavizado {\it Gaussiano} es un operador de convolución bidimensional que es usado para difuminar imágenes, eliminar detalles y remover el ruido en la imagen. La convolución es realizada por una máscara que representa la función de distribución Gaussiana. La función de distribución Gaussiana unidimensional tiene la forma\cite{Parker}(1):
+\begin{center}
+$G(x)={1 \over \sqrt{2\pi\sigma^2}}e^{(-x^2) \over (2\sigma^2)}$ (1)
+\end{center}
+Donde $\sigma$ es la desviación estándar de la distribución.
+En dos dimensiones tenemos la forma (2):
+\begin{center}
+$G(x,y)={1 \over \sqrt{2\pi\sigma^2}}e^{(-x^2-y^2) \over (2\sigma^2)}$ (2)
+\end{center}
+
+La idea del suavizado Gaussiano es usar esta distribución bidimensional como una función de \textquotedblleft punto de propagación\textquotedblright y esta es llevada a cabo mediante una operación de convolución. Ya que una imagen es almacenada como una colección discreta de pixeles necesitamos realizar una aproximación discreta de la función antes de poder ejecutar la convolución.\cite{Parker}
+El grado de suavizado esta determinado por la desviación estándar $\sigma$
+
+	\item Después de suavizar la imagen la Binarizamos, es decir que únicamente tendremos dos colores de la imagen, a Blanco y Negro. Para poder realizar este proceso debemos de calcular un umbral \textquotedblleft T\textquotedblright el cual nos permitirá identificar si un pixel cambia a Blanco o Negro(3).\cite{tales}
+\begin{center}
+$g(x,y)=\displaystyle \left\{ {1\; si\; f(x,y)\; \textgreater T \atop 0\; si\; f(x,y)\; \leq T } \right.$ (3)
+\end{center}
+Para realizar este proceso se utilizó el método {\it cvThreshold} del tipo {\it OTSU}.\\\\
+
+La umbralización es una técnica de segmentación ampliamente utilizada en las aplicaciones industriales. Se emplea cuando hay una clara diferencia entre los objetos a extraer respecto del fondo de la escena.\cite{Quilmes}\\\\
+
+Al aplicar un umbral, T, la imagen en escala de grises, f(x,y), quedará binarizada; etiquetando con '1' los píxeles correspondientes al objeto y con '0' aquellos que son del fondo.\cite{Quilmes}\\\\
+
+Una imagen es una función bidimensional de la intensidad del nivel de gris, y contiene N píxeles cuyos niveles de gris se encuentran entre 1 y L. El número de píxeles con nivel de gris i se denota como fi, y la probabilidad de ocurrencia del nivel de gris i en la imagen está dada por (4). \cite{Quilmes}
+\begin{center}
+$p_i={f_i \over N}$ (4) 
+\end{center}
+En el caso de la umbralización en dos niveles de una imagen (a veces llamada binarización), los píxeles son divididos en dos clases: $C1$, con niveles de gris $[1,\cdots, t]$; y $C2$, con niveles de gris $[t+1,\cdots, L]$. Entonces, la distribución de probabilidad de los niveles de gris para las dos clases son\cite{Quilmes}:
+\begin{center}
+$C_1:{p_1 \over \omega_1(t)},\cdots,{p_t \over \omega_1(t)}$\\
+
+$C_2:{p_{t+1} \over \omega_2(t)},{p_{t+2} \over \omega_2(t)},\cdots,{p_L \over \omega_2(t)}$
+\end{center}
+Donde
+\begin{center}
+$\displaystyle \omega_1(t)=\sum_{i=1}^{t}\; p_1$\\
+
+$\displaystyle \omega_2(t)=\sum_{i=t+1}^{L}\; p_1$
+\end{center}
+La media para la clase $C1$ y la clase $C2$
+\begin{center}
+$\displaystyle \mu_1=\sum_{i=1}^{t}{i p_i \over \omega_1(t)}$\\
+
+$\displaystyle \mu_2=\sum_{i=t+1}^{L}{i p_i \over \omega_2(t)}$
+\end{center}
+Sea $\mu_T$ la intensidad media de toda la imagen se demuestra que
+\begin{center}
+$\omega_1\mu_1+\omega_2\mu_2=\mu_T$\\
+
+$\omega_1+\omega_2=1$
+\end{center} 
+{\it Otsu} definió la varianza entre clases de una imagen umbralizada como
+\begin{center}
+$\displaystyle \sigma_{B}^{2}=\omega_1(\mu_1-\mu_T)^2+\omega_2(\mu_2-\mu_T)^2$
+\end{center}
+Para una umbralización de dos niveles, {\it Otsu} verificó que el umbral óptimo $t*$ se elige de manera que $\sigma B2$ sea máxima; esto es
+\begin{center}
+$\displaystyle t*=Max_t\{\sigma_{B}^{2}(t)\}$\\
+
+$1\leq t\leq L$
+\end{center}
+	\item Después de tener la imagen binarizada, se obtienen todos sus contornos es decir todos aquellos elementos que son de color blanco dentro de imagen, para obtener todos los contornos y sus elementos dentro del se utiliza el método cvFindContours, este método utiliza el método de contornos de {\it Suzuki}\cite{Ekow}.
+	\item Se calculan las características de cada contorno con los métodos {\it cvMoments} y {\it cvHuMoments}\\\\
+
+Los momentos son propiedades numéricas que se  pueden obtener de una determinada imagen. Tienen en cuenta todos los pixeles de la imagen, no solo los bordes\cite{Belkasim}\cite{Wavelet}.\\\\
+
+El momento que se utilizó fue el momento central que hace referencia al área (m00).\\\\
+
+Una vez calculados los momentos, calculamos los momentos invariantes de Hu, un conjunto de siete momentos invariantes. Estos momentos se mantienen invariantes ante rotaciones, traslaciones y cambios de escalas de objetos. Se define mediante las siguientes ecuaciones\cite{Wavelet}. Del cual solo usamos el momento invariante uno.
+	\item Con el momento de área y el primer invariante de {\it Hu} (m00 y hu1) comparamos estos datos para poder identificar el tipo de {\it Tag}. Lo que se le llama un reconocimiento de patrones supervisado
+	\item Dentro de la imagen que se capturó y se realizó todo el proceso anterior, identificaremos 5 tags con la misma característica, para seleccionar las diferentes funcionalidades que cada una contendrá.
+	\item Una vez procesada la imagen capturada e identificado cada tag, se segmentará para poder identificar la posición que ocupa el circulo interior, esto permitirá especificar la tarea asignada a dicha posición.(Figura \ref{fig:4.3})
+ \end{enumerate}
+
+\newpage
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.5]{ImagenesDocumentacion/imagenPruebaCuadrado.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Tag con editor de dibujo.}
+\label{fig:4.3}
+\end{figure}

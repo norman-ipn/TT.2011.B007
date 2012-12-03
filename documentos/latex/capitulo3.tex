@@ -1,3 +1,708 @@
 \chapter{Diseño}
 
+\section{Arquitectura del Sistema}
 
+A continuación se muestra la estructura o esqueleto del sistema, para ello se utilizo la abstracción de capas \cite{capas},\cite{Layer} el cual cuenta con tres capas, una capa superior, una intermedia y una inferior, las cuales se describen enseguida(Figura \ref{fig:3.1}):
+
+\begin{itemize}
+    \item La capa superior: Representa el {\it software} que implementa el sistema, con el que interactúa el usuario.
+    \item La capa intermedia: Representa la {\it API (OpenCV)} y el {\it driver (OpenNI)}, para la comunicación entre el hardware y el sistema.
+    \item La capa inferior: Muestra los dispositivos ({\it hardware}), que se encargan de la captura y proyección de la imagen.
+\end{itemize}
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.6]{ImagenesDocumentacion/ArquitecturaCapas.ps} %[0cm,0cm][16.5cm,7cm]
+\caption{Arquitectura - abstracción de capas.}
+\label{fig:3.1}
+\end{figure}
+
+\section{Diagramas Generales del Sistema}
+En esta sección se mostrarán los diagramas generales, que se llevaron acabo para la realización del sistema, los cuales son: de casos de uso(Figura \ref{fig:3.2}), de clases(Figura \ref{fig:3.3}), de secuencia(Figura \ref{fig:3.4}) y de estados(Figura \ref{fig:3.5}).
+\subsection{Diagrama General de Casos de Uso.}
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.8]{ImagenesDocumentacion/generalDCasosU.ps} %[0cm,0cm][16.5cm,7cm]
+\caption{Diagrama General de Casos de Uso.}
+\label{fig:3.2}
+\end{figure}
+\newpage
+\subsubsection{Especificación de casos de uso}
+En este aparto se describen los casos de uso del sistema,donde se explica cada caso de uso correspondiente a su Cuadro, en el cual se tiene su descripción,el actor, las condiciones con las que se debe contar,su flujo, asi como anotiaciones y/o excepciones.\\\\
+Abreviaturas:\\\\
+E.C.U.: Especificación de Caso de Uso\\\\
+TT-2011-B007: Trabajo Terminal con No. de Registro 2011-B007\\\\
+
+{\bf Caso de Uso: Inicializar Sistema}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{5cm}|p{9cm}|}
+\hline
+Especificación del Caso de Uso: & Inicializar Sistema \\ \hline
+ID: & E.C.U-1\\ \hline
+Nombre: &  Inicializar el sistema\\ \hline
+Descripción: & El usuario inicializara la aplicación del sistema\\ \hline
+Autor:	& TT-2011-B007\\ \hline
+Actores: & Usuarios (Máximo dos usuarios)\\ \hline
+Precondición: & Dispositivos conectados (kinect, proyector),Driver y API instalados\\ \hline
+Pos Condición: & Sistema inicializado con éxito\\ \hline
+Flujo Normal de eventos: & Iniciar:\\
+& 1.	El actor iniciara el sistema de dibujo en 2D multi-touch con reconocimiento de patrones\\
+& 2.	Una vez iniciado, el usuario podrá interactuar con el sistema
+\\\hline
+Flujos Alternos: & Sistema ya iniciado:\\
+& 1.	Si ya se inicio, se procederá con el paso 2\\ \hline
+Excepciones: & Ninguna\\ \hline
+Anotaciones: & Ninguna\\ \hline
+\end{tabular}
+\caption{Inicializar Sistema.}
+\label{tab:3.1}
+\end{table}
+
+\newpage
+{\bf Caso de Uso: Rotar Herramienta}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{5cm}|p{9cm}|}
+\hline
+Especificación del Caso de Uso: & Rotar Herramienta\\ \hline
+ID: & E.C.U-2\\ \hline
+Nombre: &  Rotar Herramienta\\ \hline
+Descripción: & El usuario rotará la herramienta llamada TAG, en el área de trabajo\\ \hline
+Autor: & TT-2011-B007\\ \hline
+Actores: & Usuarios (Máximo dos usuarios)\\ \hline
+Precondición: & Dispositivo kinect conectado\\ \hline
+Pos Condición: & La herramienta estará situada en el área de trabajo\\ \hline
+Flujo Normal de eventos: & Colocación de la Herramienta:\\
+& 1.	El actor  seleccionara la herramienta que desea utilizar\\
+& 2.	Se rotará la herramienta en el área de trabajo
+\\\hline
+Flujos Alternos: & Posición de Herramienta:\\
+& 1.	Después de rotar la herramienta se acomodara en una posición para hacer algo distinto en el editor, si se trata de una herramienta para hacer cambios\\ \hline
+Excepciones: & Herramienta mal posicionada:\\
+& 1.	Si la herramienta  no está del lado indicado ó de la posición correcta, no se podrá trabajar con ella\\ \hline
+Anotaciones: & Solo se puede utilizar una herramienta en el área a la vez \\ \hline
+\end{tabular}
+\caption{Rotar Herramienta.}
+\label{tab:3.2}
+\end{table}
+
+\newpage
+{\bf Caso de Uso: Reconocer Herramienta}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{5cm}|p{9cm}|}
+\hline
+Especificación del Caso de Uso: & Reconocer Herramienta\\ \hline
+ID: & E.C.U-3\\ \hline
+Nombre: &  Reconocer Herramienta\\ \hline
+Descripción: & Cuando ya se encuentre colocada la tag , kinect tomará video  del escenario el cual será procesado por la PC y se detecta  la tag que este ubicada en el área de trabajo\\ \hline
+Autor: & TT-2011-B007\\ \hline
+Actores: & Usuarios (Máximo dos usuarios)\\ \hline
+Precondición: & Dispositivo kinect conectado\\ \hline
+Pos Condición: & Quedará habilitada la acción correspondiente a la tag.\\ \hline
+Flujo Normal de eventos: & Detección de imagen:\\
+& 1.	Una vez colocada la herramienta en el área, el kinect captura video del escenario para procesarla\\
+& 2.	Una vez que se procese, se podrá hacer la acción que tiene prevista la herramienta\\
+& 3.	El actor  podrá seleccionar ó dibujar en el área de trabajo
+\\\hline
+Flujos Alternos: & Posición de Herramienta:\\
+& 1.	Si se trata de una herramienta para hacerle cambios a lo dibujado, entonces se moverá de posición la herramienta(giro), para tener dichos cambios, esto solo aplica en escalar y color\\ \hline
+Excepciones: & Imagen  incorrecta:\\
+& 1.	Si la tag no corresponde con las indicadas en el sistema ,no se podrá reconocer\\ \hline
+Anotaciones: & Solo se puede utilizar una herramienta en el área a la vez \\ \hline
+\end{tabular}
+\caption{Reconocer Herramienta.}
+\label{tab:3.3}
+\end{table}
+
+\newpage
+{\bf Caso de Uso: Seleccionar}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{5cm}|p{9cm}|}
+\hline
+Especificación del Caso de Uso: & Seleccionar\\ \hline
+ID: & E.C.U-4\\ \hline
+Nombre: &  Seleccionar\\ \hline
+Descripción: & Selección del dibujo para poder realizar algún cambio sobre éste.\\ \hline
+Autor: & TT-2011-B007\\ \hline
+Actores: & Usuarios (Máximo dos usuarios)\\ \hline
+Precondición: & Dispositivo kinect conectado, dibujo previo\\ \hline
+Pos Condición: & Se selecciono con éxito el dibujo.\\ \hline
+Flujo Normal de eventos: & Selección:\\
+& 1.	Ya que se tenga el dibujo, el actor, seleccionará la imagen mediante el uso de su dedo\\
+& 2.	Para por ultimo poder hacer algún cambio en la imagen\\ \hline
+Flujos Alternos: & Dibujo seleccionado:\\
+& 1.	Una vez que se está en el paso 1 del flujo normal se puede  cambiar el tipo de acción para modificar el dibujo\\ \hline
+Excepciones: & Selección de dibujo:\\
+& 1.	Trazos a mano alzada no podrán ser seleccionados.\\ \hline
+Anotaciones: & Solo se puede utilizar una herramienta en el área a la vez, el usuario solo puede utilizar un dedo de la mano. \\ \hline
+\end{tabular}
+\caption{Seleccionar.}
+\label{tab:3.4}
+\end{table}
+
+\newpage
+{\bf Caso de Uso: Herramienta Invalida}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{5cm}|p{9cm}|}
+\hline
+Especificación del Caso de Uso: & Herramienta Invalida\\ \hline
+ID: & E.C.U-5\\ \hline
+Nombre: & Herramienta Invalida\\ \hline
+Descripción: & Si se llega a poner otro objeto que no se tenga considerado como herramienta del sistema, entonces el  sistema no reconocerá dicha herramienta.\\ \hline
+Autor: & TT-2011-B007\\ \hline
+Actores: & Usuarios (Máximo dos usuarios)\\ \hline
+Precondición: & Dispositivo kinect conectado\\ \hline
+Pos Condición: & El objeto es una herramienta invalida para el sistema.\\ \hline
+Flujo Normal de eventos: & Herramienta Errónea:\\
+& 1.	Si el actor llegará a poner otro objeto que no se considero en el sistema, entonces no se podrá reconocer el objeto\\ \hline
+Flujos Alternos: & Verificar Herramienta:\\
+& 1.	Si pasara el paso 1 del  evento, entonces se verificaría  si la herramienta es la correcta o está colocada correctamente.\\ \hline
+Excepciones: & Ninguna\\ \hline
+Anotaciones: & Solo se puede utilizar una herramienta en el área a la vez.\\ \hline
+\end{tabular}
+\caption{Herramienta Invalida.}
+\label{tab:3.5}
+\end{table}
+
+\newpage
+{\bf Caso de Uso: Mover}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{5cm}|p{9cm}|}
+\hline
+Especificación del Caso de Uso: & Mover\\ \hline
+ID: & E.C.U-6\\ \hline
+Nombre: & Mover\\ \hline
+Descripción: & Esta herramienta nos permite mover de posición alguna figura, para ello debe estar seleccionada.\\ \hline
+Autor: & TT-2011-B007\\ \hline
+Actores: & Usuarios (Máximo dos usuarios)\\ \hline
+Precondición: & Dispositivo kinect conectado\\ \hline
+Pos Condición: & Reconocimiento de la herramienta, poder mover con éxito el dibujo.\\ \hline
+Flujo Normal de eventos: & Mover:\\
+& 1.	El actor seleccionará el dibujo que desea mover\\
+& 2.	El actor procederá a mover el dibujo seleccionado sobre el área.\\ \hline
+Flujos Alternos: & Ninguno.\\ \hline
+Excepciones: & Selección de dibujo:\\
+& 1.	Trazos a mano alzada no podrán ser seleccionados.\\ \hline
+Anotaciones: & Solo se puede utilizar una herramienta en el área a la vez , el usuario solo puede utilizar  un dedo de  la mano.\\ \hline
+\end{tabular}
+\caption{Mover.}
+\label{tab:3.6}
+\end{table}
+
+\newpage
+{\bf Caso de Uso: Cambiar Color}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{5cm}|p{9cm}|}
+\hline
+Especificación del Caso de Uso: & Cambiar Color\\ \hline
+ID: & E.C.U-7\\ \hline
+Nombre: & Cambiar Color\\ \hline 
+Descripción: & Esta herramienta nos permite cambiar de color alguna figura seleccionada.\\ \hline
+Autor: & TT-2011-B007\\ \hline
+Actores: & Usuarios (Máximo dos usuarios)\\ \hline
+Precondición: & Dispositivo kinect conectado\\ \hline
+Pos Condición: & Reconocimiento de la herramienta, poder cambiar de color con éxito el dibujo.\\ \hline
+Flujo Normal de eventos: & Color:\\
+& 1.	El actor moverá las herramientas que se tiene para la gama de colores(64 colores), una por R, otra por G y una de B, para dar dichas combinaciones\\
+& 2.	Se rotará la herramienta hasta conseguir el color deseado en el dibujo.\\
+& 3.	El actor dibujara su trazo con el color escogido\\ \hline
+Flujos Alternos: & Ninguno.\\ \hline
+Excepciones: & Selección de dibujo:\\
+& 1.	Trazos a mano alzada no podrán ser seleccionados.\\ \hline
+Anotaciones: & Solo se puede utilizar una herramienta en el área a la vez , el usuario solo puede utilizar  un dedo de  la mano.\\ \hline
+\end{tabular}
+\caption{Cambiar Color.}
+\label{tab:3.7}
+\end{table}
+
+\newpage
+{\bf Caso de Uso: Escalar}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{5cm}|p{9cm}|}
+\hline
+Especificación del Caso de Uso: & Escalar\\ \hline
+ID: & E.C.U-8\\ \hline
+Nombre: & Escalar\\ \hline 
+Descripción: & Esta herramienta nos permite cambiar de tamaño alguna figura seleccionada.\\ \hline
+Autor: & TT-2011-B007\\ \hline
+Actores: & Usuarios (Máximo dos usuarios)\\ \hline
+Precondición: & Dispositivo kinect conectado\\ \hline
+Pos Condición: & Reconocimiento de la herramienta, poder cambiar de tamaño con éxito el dibujo.\\ \hline
+Flujo Normal de eventos: & Tamaño:\\
+& 1.	Se colocará la herramienta de Escalar en el área de trabajo\\
+& 2.	El actor seleccionará el dibujo que desea cambiar de tamaño.\\
+& 3.	Se rotara la herramienta hasta conseguir el tamaño deseado en el dibujo\\ \hline
+Flujos Alternos: & Ninguno.\\ \hline
+Excepciones: & Selección de dibujo:\\
+& 1.	Trazos a mano alzada no podrán ser seleccionados.\\ \hline
+Anotaciones: & Solo se puede utilizar una herramienta en el área a la vez , el usuario solo puede utilizar  un dedo de  la mano.\\ \hline
+\end{tabular}
+\caption{Escalar.}
+\label{tab:3.8}
+\end{table}
+
+\newpage
+{\bf Caso de Uso: Reconocer Rotación}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{5cm}|p{9cm}|}
+\hline
+Especificación del Caso de Uso: & Reconocer Rotación\\ \hline
+ID: & E.C.U-9\\ \hline
+Nombre: & Reconocer Rotación\\ \hline 
+Descripción: & El dispositivo kinect transmitirá la información de la escena de la rotación de la tag a la PC, al cambiar de posición (girar) se procesa para aplicar cierto efecto.\\ \hline
+Autor: & TT-2011-B007\\ \hline
+Actores: & Usuarios (Máximo dos usuarios)\\ \hline
+Precondición: & Dispositivo kinect conectado\\ \hline
+Pos Condición: & Reconocimiento de la acción de la herramienta.\\ \hline
+Flujo Normal de eventos: & Reconocimiento de rotación: \\
+& 1.	Una vez colocada la herramienta en el área, el kinect captura el escenario para procesarlo.\\
+& 2.	El actor rotara la imagen para obtener la acción designada.\\ \hline
+Flujos Alternos: & Rotación:\\
+& 1.	Si ya se tiene el paso  1  del  evento, entonces se procede a rotar la herramienta  las veces que permite el sistema, para obtener la acción designada \\ \hline
+Excepciones: & Ninguna.\\ \hline
+Anotaciones: & Solo se puede utilizar una herramienta en el área a la vez , el usuario solo puede utilizar  un dedo de  la mano.\\ \hline
+\end{tabular}
+\caption{Reconocer Rotación.}
+\label{tab:3.9}
+\end{table}
+
+\newpage
+{\bf Caso de Uso: Realizar Rotación}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{5cm}|p{9cm}|}
+\hline
+Especificación del Caso de Uso: & Realizar Rotación\\ \hline
+ID: & E.C.U-10\\ \hline
+Nombre: & Realizar Rotación\\ \hline 
+Descripción: &El dispositivo kinect capturará el escenario y se identificará la rotación de la tag, la cual al cambiar de posición, podremos visualizar la acción designada.\\ \hline
+Autor: & TT-2011-B007\\ \hline
+Actores: & Usuarios (Máximo dos usuarios)\\ \hline
+Precondición: & Dispositivo kinect conectado\\ \hline
+Pos Condición: & Reconocimiento de cambio de la herramienta.\\ \hline
+Flujo Normal de eventos: & Reconocimiento de rotación:\\
+& 1.	Giro de la tag por parte del usuario.\\
+& 2.	Se aplica el cambio al dibujo de acuerdo a la acción designada para la tag.\\ \hline
+Flujos Alternos: & Rotación:\\
+& 1.	Giro incompleto de la tag. \\ \hline
+Excepciones: & Selección de dibujo:\\
+& 1.	Trazos a mano alzada no podrán ser seleccionados.\\
+& 2.	La herramienta tiene un limite de giros.\\ \hline
+Anotaciones: & Solo se puede utilizar una herramienta en el área a la vez , el usuario solo puede utilizar  un dedo de  la mano.\\ \hline
+\end{tabular}
+\caption{Realizar Rotación.}
+\label{tab:3.10}
+\end{table}
+
+\newpage
+{\bf Caso de Uso: Proyectar}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{5cm}|p{9cm}|}
+\hline
+Especificación del Caso de Uso: &  Proyectar\\ \hline
+ID: & E.C.U-11\\ \hline
+Nombre: &  Proyectar\\ \hline 
+Descripción: & El proyector nos dará la visualización del área de trabajo\\ \hline
+Autor: & TT-2011-B007\\ \hline
+Actores: & Usuarios (Máximo dos usuarios)\\ \hline
+Precondición: & Dispositivos: kinect y proyector conectados\\ \hline
+Pos Condición: & Proyección del área de trabajo.\\ \hline
+Flujo Normal de eventos: & Proyección:\\
+& 1.	Una vez iniciado el sistema se proyectará el área de trabajo.\\
+& 2.	El usuario puede empezar a dibujar o colocar herramientas para dibujar.\\ \hline
+Flujos Alternos: & Ninguno. \\ \hline
+Excepciones: & Ninguno.\\ \hline
+Anotaciones: & Al inicio del sistema solo se visualizara el área de trabajo.\\ \hline
+\end{tabular}
+\caption{ Proyectar.}
+\label{tab:3.11}
+\end{table}
+
+\newpage
+{\bf Caso de Uso: Reconocer Desplazamiento}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{5cm}|p{9cm}|}
+\hline
+Especificación del Caso de Uso: & Reconocer Desplazamiento\\ \hline
+ID: & E.C.U-12\\ \hline
+Nombre: & Reconocer Desplazamiento\\ \hline 
+Descripción: & El dispositivo kinect capturará el desplazamiento del dedo para que lo procese la PC.\\ \hline
+Autor: & TT-2011-B007\\ \hline
+Actores: & Usuarios (Máximo dos usuarios)\\ \hline
+Precondición: & Dispositivos: kinect conectado\\ \hline
+Pos Condición: & Reconocimiento del dedo con éxito.\\ \hline
+Flujo Normal de eventos: & Proyección:\\
+& 1.	El actor realizará el desplazamiento de su dedo.\\
+& 2.	El kinect capturará la escena y la envía a la PC para procesar el movimiento que se realice.\\ \hline
+Flujos Alternos: & Ninguno. \\ \hline
+Excepciones: & Ninguno.\\ \hline
+Anotaciones: & Los usuarios solo pueden usar un solo dedo índice por usuario.\\ \hline
+\end{tabular}
+\caption{ Reconocer Desplazamiento.}
+\label{tab:3.12}
+\end{table}
+
+\newpage
+{\bf Caso de Uso: Realizar Desplazamiento}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{5cm}|p{9cm}|}
+\hline
+Especificación del Caso de Uso: & Realizar Desplazamiento\\ \hline
+ID: & E.C.U-13\\ \hline
+Nombre: & Realizar Desplazamiento\\ \hline 
+Descripción: & El actor hará el desplazamiento del dedo hasta la posición que se desea.\\ \hline
+Autor: & TT-2011-B007\\ \hline
+Actores: & Usuarios (Máximo dos usuarios)\\ \hline
+Precondición: & Ninguna.\\ \hline
+Pos Condición: & Reconocimiento del dedo con éxito.\\ \hline
+Flujo Normal de eventos: & Desplazamiento:\\
+& 1.	El actor dezplazará su dedo por el área de trabajo de un punto a otro.\\
+& 2.	El kinect captura y la PC procesara el movimiento que realice el dedo.\\ \hline
+Flujos Alternos: & Ninguno. \\ \hline
+Excepciones: & Ninguno.\\ \hline
+Anotaciones: & Los usuarios solo pueden usar un solo dedo índice por usuario.\\ \hline
+\end{tabular}
+\caption{Realizar Desplazamiento.}
+\label{tab:3.13}
+\end{table}
+
+\newpage
+{\bf Caso de Uso: Dibujar}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{5cm}|p{9cm}|}
+\hline
+Especificación del Caso de Uso: & Dibujar\\ \hline
+ID: & E.C.U-14\\ \hline
+Nombre: & Dibujar\\ \hline 
+Descripción: & El actor podrá realizar trazos dentro del área de trabajo.\\ \hline
+Autor: & TT-2011-B007\\ \hline
+Actores: & Usuarios (Máximo dos usuarios)\\ \hline
+Precondición: & Dispositivos: kinect y proyector, tags en caso de requerirlo..\\ \hline
+Pos Condición: & Visualización de trazo realizado.\\ \hline
+Flujo Normal de eventos: & Dibujar con herramienta:\\
+& 1.	El actor pondrá la herramienta de la figura deseada.\\
+& 2.	Desplazara su dedo índice para formar la figura.\\ \hline
+Flujos Alternos: &Dibujar  sin herramienta:\\
+& 1.	Si el actor quiere dibujar un trazo a mano alzada simplemente realizara el trazo en el área de trabajo.\\ \hline
+Excepciones: & Ninguno.\\ \hline
+Anotaciones: & Los usuarios solo pueden usar un solo dedo índice por usuario.\\ \hline
+\end{tabular}
+\caption{Dibujar.}
+\label{tab:3.14}
+\end{table}
+
+\newpage
+{\bf Caso de Uso: Mano Alzada}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{5cm}|p{9cm}|}
+\hline
+Especificación del Caso de Uso: & Mano Alzada\\ \hline
+ID: & E.C.U-15\\ \hline
+Nombre: & Mano Alzada\\ \hline 
+Descripción: & El actor podrá realizar ciertos trazos a mano alzada dentro del área de trabajo.\\ \hline
+Autor: & TT-2011-B007\\ \hline
+Actores: & Usuarios (Máximo dos usuarios)\\ \hline
+Precondición: & Dispositivos: kinect y proyector , Posición inicial.\\ \hline
+Pos Condición: & Trazo realizado.\\ \hline
+Flujo Normal de eventos: & Dibujar a mano alzada:\\
+& 1.	El actor usara su dedo con un movimiento libre de un punto inicial a un punto final, dentro del área de trabajo.\\
+& 2.	El kinect captura la escena y se reflejará el trazo realizado.\\ \hline
+Flujos Alternos: & Ninguno.\\ \hline
+Excepciones: & Velocidad de desplazamiento:\\
+& 1.	Si la velocidad de desplazamiento varía de la velocidad de procesamiento, el trazo realizado podría no ser igual al movimiento del dedo\\ \hline
+Anotaciones: & Los usuarios solo pueden usar un solo dedo índice por usuario.\\ \hline
+\end{tabular}
+\caption{Mano Alzada.}
+\label{tab:3.15}
+\end{table}
+
+\newpage
+{\bf Caso de Uso: Línea Recta}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{5cm}|p{9cm}|}
+\hline
+Especificación del Caso de Uso: & Línea Recta\\ \hline
+ID: & E.C.U-16\\ \hline
+Nombre: & Línea Recta\\ \hline 
+Descripción: & El actor podrá realizar un trazo recto a partir de dos puntos.\\ \hline
+Autor: & TT-2011-B007\\ \hline
+Actores: & Usuarios (Máximo dos usuarios)\\ \hline
+Precondición: & Dispositivos: kinect y proyector , Posición inicial.\\ \hline
+Pos Condición: & Trazo realizado.\\ \hline
+Flujo Normal de eventos: & Dibujar a mano alzada:\\
+& 1.	El actor usará la herramienta para líneas.\\
+& 2.	El actor usara su dedo con un movimiento libre dentro del área de trabajo.\\
+& 3.	El kinect capturará la escena y  se reflejará el trazo realizado en el área\\ \hline
+Flujos Alternos: & Interacción de los  actores:\\
+& 1.	El desplazamiento que realiza el actor ,puede variar con lo que se dibuja\\ \hline
+Excepciones: & Segmentación de Pixel:\\
+& 1.	Se puede apreciar una pequeña deformación en la línea, al no poder segmentar un pixel.\\ \hline
+Anotaciones: & Los usuarios solo pueden usar un solo dedo índice por usuario.\\ \hline
+\end{tabular}
+\caption{Línea Recta.}
+\label{tab:3.16}
+\end{table}
+
+\newpage
+{\bf Caso de Uso: Elipse}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{5cm}|p{9cm}|}
+\hline
+Especificación del Caso de Uso: & Elipse\\ \hline
+ID: & E.C.U-17\\ \hline
+Nombre: & Elipse\\ \hline 
+Descripción: & El actor podrá dibujar una curva plana y cerrada, simétrica respecto a dos ejes perpendiculares entre sí.\\ \hline
+Autor: & TT-2011-B007\\ \hline
+Actores: & Usuarios (Máximo dos usuarios)\\ \hline
+Precondición: & Dispositivos: kinect y proyector , Posición inicial.\\ \hline
+Pos Condición: & Elipse realizada.\\ \hline
+Flujo Normal de eventos: & Dibujar elipse:\\
+& 1.	El actor utilizará la herramienta para el elipse.\\
+& 2.	El actor usara su dedo con un movimiento libre dentro del área de trabajo.\\
+& 3.	El kinect lo capturará y  se reflejara el trazo realizado en el área\\ \hline
+Flujos Alternos: & Interacción de los  actores:\\
+& 1.	Cuando se encuentre  el paso 1, los actores podrán realizar su trazo respectivamente dentro del área de trabajo\\ \hline
+Excepciones: & Distancia de puntos de la figura:\\
+& 1.	1.	Se puede apreciar una deformación mayor cuando la distancia entre los puntos sea menor, al ser pixeles de forma cuadrada.\\ \hline
+Anotaciones: & Los usuarios solo pueden usar un solo dedo índice por usuario.\\ \hline
+\end{tabular}
+\caption{Elipse.}
+\label{tab:3.17}
+\end{table}
+
+\newpage
+{\bf Caso de Uso: Circunferencia}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{5cm}|p{9cm}|}
+\hline
+Especificación del Caso de Uso: & Circunferencia\\ \hline
+ID: & E.C.U-18\\ \hline
+Nombre: &  Circunferencia\\ \hline 
+Descripción: & El actor podrá dibujar una superficie plana limitada por una circunferencia.\\ \hline
+Autor: & TT-2011-B007\\ \hline
+Actores: & Usuarios (Máximo dos usuarios)\\ \hline
+Precondición: & Dispositivos: kinect y proyector , Posición inicial.\\ \hline
+Pos Condición: & Circunferencia realizada.\\ \hline
+Flujo Normal de eventos: & Dibujar circunferencia:\\
+& 1.	El actor utilizará la herramienta para la circunferencia.\\
+& 2.	El actor usara su dedo con un movimiento libre dentro del área de trabajo.\\
+& 3.	kinect lo capturará y  se reflejara el trazo realizado en el área\\ \hline
+Flujos Alternos: & Interacción de los  actores:\\
+& 1.	Cuando se encuentre  el paso 1, los actores podrán realizar su trazo respectivamente dentro del área de trabajo\\ \hline
+Excepciones: & Distancia de puntos de la figura:\\
+& 1.	Se puede apreciar una deformación mayor cuando la distancia entre los puntos sea menor, al ser pixeles de forma cuadrada.\\ \hline
+Anotaciones: & Los usuarios solo pueden usar un solo dedo índice por usuario.\\ \hline
+\end{tabular}
+\caption{Circunferencia.}
+\label{tab:3.18}
+\end{table}
+
+\newpage
+{\bf Caso de Uso: Polígono}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{5cm}|p{9cm}|}
+\hline
+Especificación del Caso de Uso: & Polígono\\ \hline
+ID: & E.C.U-18\\ \hline
+Nombre: & Polígono\\ \hline 
+Descripción: & El actor podrá dibujar una figura plana compuesta por una secuencia de segmentos rectos , que se puede elegir entre  3  a 6 lados.\\ \hline
+Autor: & TT-2011-B007\\ \hline
+Actores: & Usuarios (Máximo dos usuarios)\\ \hline
+Precondición: & Dispositivos: kinect y proyector , Posición inicial.\\ \hline
+Pos Condición: & Polígono realizado.\\ \hline
+Flujo Normal de eventos: & Dibujar polígono:\\
+& 1.	El actor utilizará la herramienta del polígono deseado.\\
+& 2.	El actor usara su dedo con un movimiento libre dentro del área de trabajo.\\
+& 3.	El kinect lo capturará y  se reflejara el trazo de la circunferencia.\\ \hline
+Flujos Alternos: & Interacción de los  actores:\\
+& 1.	Cuando se encuentre  el paso 1, los actores podrán realizar su trazo respectivamente dentro del área de trabajo\\ \hline
+Excepciones: & Dimensión de la figura:\\
+& 1.	Se puede apreciar una deformación, cuando se le da una dimensión, al no poder segmentar un pixel.\\
+& 2.	Solo se puede hacer polígonos de 3 a 6 lados.\\ \hline
+Anotaciones: & Los usuarios solo pueden usar un solo dedo índice por usuario.\\ \hline
+\end{tabular}
+\caption{Polígono.}
+\label{tab:3.19}
+\end{table}
+
+\newpage
+\subsection{Diagrama General de Clases.}
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.8]{ImagenesDocumentacion/generalDClases.ps} %[0cm,0cm][16.5cm,15cm]
+\caption{Diagrama General de Clases.}
+\label{fig:3.3}
+\end{figure}
+
+\newpage
+\subsection{Diagrama General de Secuencia.}
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.8]{ImagenesDocumentacion/generalDSecuencia.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Diagrama General de Secuencia.}
+\label{fig:3.4}
+\end{figure}
+
+\newpage
+\subsection{Diagrama General de Estados.}
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.85]{ImagenesDocumentacion/generalDEstado.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Diagrama General de Estados.}
+\label{fig:3.5}
+\end{figure}
+
+\newpage
+\section{Diagramas del Módulo 1}
+En esta sección se mostrarán los diagramas del Módulo 1, que se llevaron acabo para la realización del módulo, los cuales son: de casos de uso(Figura \ref{fig:3.6}), de clases(Figura \ref{fig:3.7}), de secuencia(Figura \ref{fig:3.8}) y de estados(Figura \ref{fig:3.9}).
+
+\subsection{Diagrama de Casos de Uso - Módulo 1.}
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.8]{ImagenesDocumentacion/mod1DCasosU.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Diagrama de Casos de Uso - Módulo 1.}
+\label{fig:3.6}
+\end{figure}
+
+\newpage
+\subsection{Diagrama de clases - Módulo 1.}
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.95]{ImagenesDocumentacion/mod1DClases.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Diagrama de clases - Módulo 1.}
+\label{fig:3.7}
+\end{figure}
+
+\newpage
+\subsection{Diagrama de Secuencia - Módulo 1.}
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.95]{ImagenesDocumentacion/mod1DSecuencia.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Diagrama de Secuencia - Módulo 1.}
+\label{fig:3.8}
+\end{figure}
+
+\newpage
+\subsection{Diagrama de Estados - Módulo 1.}
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.8]{ImagenesDocumentacion/mod1DEstado.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Diagrama de Estados - Módulo 1.}
+\label{fig:3.9}
+\end{figure}
+
+\newpage
+\section{Diagramas del Módulo 2}
+En esta sección se mostrarán los diagramas del Módulo 2, que se llevaron acabo para la realización del módulo, los cuales son: de casos de uso(Figura \ref{fig:3.10}), de clases(Figura \ref{fig:3.11}), de secuencia(Figura \ref{fig:3.12}) y de estados(Figura \ref{fig:3.13}).
+
+\subsection{Diagrama de Casos de Uso - Módulo 2.}
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.75]{ImagenesDocumentacion/mod2DCasosU.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Diagrama de Casos de Uso - Módulo 2.}
+\label{fig:3.10}
+\end{figure}
+
+\newpage
+\subsection{Diagrama de Clases - Módulo 2.}
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.85]{ImagenesDocumentacion/mod2DClases.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Diagrama de Clases - Módulo 2.}
+\label{fig:3.11}
+\end{figure}
+
+\newpage
+\subsection{Diagrama de Secuencias - Módulo 2.}
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.8]{ImagenesDocumentacion/mod2DSecuencia.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Diagrama de Secuencias - Módulo 2.}
+\label{fig:3.12}
+\end{figure}
+
+\newpage
+\subsection{Diagrama de Estados - Módulo 2.}
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.9]{ImagenesDocumentacion/mod2DEstado.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Diagrama de Estados - Módulo 2.}
+\label{fig:3.13}
+\end{figure}
+
+\newpage
+\section{Diagramas del Módulo 3}
+En esta sección se mostrarán los diagramas del Módulo 3, que se llevaron acabo para la realización del módulo, los cuales son: de casos de uso(Figura \ref{fig:3.14}), de secuencia(Figura \ref{fig:3.15}) y de estados(Figura \ref{fig:3.16}).
+
+\subsection{Diagrama de Casos de Uso  - Módulo 3.}
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.8]{ImagenesDocumentacion/mod3DCasosU.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Diagrama de Casos de Uso  - Módulo 3.}
+\label{fig:3.14}
+\end{figure}
+
+\newpage
+\subsection{Diagrama de Secuencia - Módulo 3.}
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.9]{ImagenesDocumentacion/mod3DSecuencia.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Diagrama de Secuencia - Módulo 3.}
+\label{fig:3.15}
+\end{figure}
+
+\newpage
+\subsection{Diagrama de Estados - Módulo 3.}
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.85]{ImagenesDocumentacion/mod3DEstado.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Diagrama de Estados - Módulo 3.}
+\label{fig:3.16}
+\end{figure}
+
+\newpage
+\section{Diagramas del Módulo 4}
+En esta sección se mostrarán los diagramas del Módulo 4, que se llevaron acabo para la realización del módulo, los cuales son: de casos de uso(Figura \ref{fig:3.17}), de secuencia(Figura \ref{fig:3.18}) y de estados(Figura \ref{fig:3.19}).
+
+\subsection{Diagrama de Casos de Uso - Módulo 4.}
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.8]{ImagenesDocumentacion/mod4DCasosU.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Diagrama de Casos de Uso  - Módulo 4.}
+\label{fig:3.17}
+\end{figure}
+
+\newpage
+\subsection{Diagrama de Secuencia - Módulo 4.}
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.85]{ImagenesDocumentacion/mod4DSecuencia.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Diagrama de Secuencia  - Módulo 4.}
+\label{fig:3.18}
+\end{figure}
+
+\newpage
+\subsection{Diagrama de Estados - Módulo 4.}
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.9]{ImagenesDocumentacion/mod4DEstado.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Diagrama de Estados - Módulo 4.}
+\label{fig:3.19}
+\end{figure}

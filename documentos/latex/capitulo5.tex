@@ -1,6 +1,89 @@
 \chapter{Pruebas}
 
-Se presentan las pruebas realizadas al sistema con el objetivo de verificar su funcionamiento.
-También se muestras los resultados de dichas pruebas.
+Se presentan las pruebas realizadas al sistema con el objetivo de verificar su funcionamiento.\\\\
+También se muestras los resultados de dichas pruebas. Para ello se uso un plan de pruebas del tipo caja negra,en la cual se tiene un conjunto de entradas y se verificaba si la salida es la correcta, ya que el proceso interno de las funciones no es complejo se descarto la posibilidad de evaluar con un plan de pruebas del tipo caja blanca\cite{Prueba}.
 
+\section{Pruebas - Módulo 1: Editor básico de dibujo}
 
+En esta sección se muestran las pruebas que se llevaron a cabo en el Modulo 1, para determinar si cumple con todos los requerimientos y condiciones de satisfacción, para verificar si la funcionalidad es la correcta. En el Cuadro \ref{tab:5.1} se muestra los resultados de las pruebas que se llevaron a cabo para el modulo  y las correcciones para cumplir con las condiciones y requerimientos:
+
+\newpage
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{1.5cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}%{|p{4.8cm}|p{11cm}|}
+\hline
+No. de Prueba & Requerimientos Probados & Entrada & Resultados & Correciones\\ \hline
+$1$ & R1:Trazo Mano Alzada & Posición del puntero & Al aumentar la velocidad del desplazamiento del mouse, no traza en algunos intervalos & Cambiar la forma en que se obtienen las coordenadas del puntero\\ \hline
+$2$ & R2:Trazar Líneas Rectas R3:Trazar líneas rectas en varias direcciones & Posición del puntero al presionar y Posición del puntero al soltar & Trazo correcto & Ninguna\\ \hline
+$3$ & R4:Trazar Circunferencia & Posición del puntero al presionar y Posición del puntero al soltar & No traza circunferencia si el trazo empieza de abajo hacia arriba &	Validar para cualquier posición\\ \hline
+$4$ &	R5:Trazar Elipse & Posición del puntero al presionar y Posición del puntero al soltar & Elipse incompleta & Modificar los arcos a $180$ grados de cada eje\\ \hline
+$5$ &	R6:Trazar Polígonos R7:Tipo de polígono de 3-6 lados & Posición del puntero al presionar y Posición del puntero al soltar & Al trazar polígonos de 5-6 lados, la figura se deforma si es trazo es de abajo hacia arriba & Validar para cualquier posición y precisar un poco más los vértices\\ \hline
+\end{tabular}
+\caption{Pruebas realizadas al Módulo 1.}
+\label{tab:5.1}
+\end{table}
+
+\newpage
+\section{Pruebas - Módulo 2: Reconocimiento de trazos a mano alzada}
+
+En esta sección se muestran las pruebas que se llevaron a cabo en el Modulo 2, para determinar la funcionalidad y el cumplimiento de los requerimientos, para verificar si la funcionalidad es la correcta. En el Cuadro \ref{tab:5.2} se muestra los resultados de las pruebas que se llevaron a cabo para el modulo  y las correcciones para cumplir con las condiciones y requerimientos:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{1.5cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}%{|p{4.8cm}|p{11cm}|}
+\hline
+No. de Prueba & Requerimientos Probados & Entrada & Resultados & Correciones\\ \hline
+$1$ & R8:Integracion de kinect &	Verificar la comunicación de kinect a PC & El dispositivo kinect y la PC no se comunican entre si &	Verificar si el driver y sus respectivos paquetes están instalados en las rutas correctas\\ \hline
+$2$ &	R9:Detección del dedo índice & Verificar si al colocar la mano dentro del área de visión del kinect se identifica el dedo índice & El algoritmo no funciona correctamente únicamente se obtiene la palma de la mano como punto de referencia & Modificar el cálculo al segmentar la imagen y verificar si el contorno de la mano está completamente cubierto \\ \hline
+$3$  & R10:Renococer Desplazamiento del dedo índice &	Verificar la posición del dedo índice al desplazarse dentro de la visión del kinect &	Únicamente se tiene el seguimiento de la palma. &	Corregir el R9, ya que se depende del mismo\\ \hline
+$4$ &	R11:Dibujar a mano alzada con el dedo índice & Desplazar el dedo índice dentro de la visión del kinect simulando un trazo a mano alzada &	Se dibujo la trayectoria, sin embargo el seguimiento fue de la palma & Corregir el R9\\ \hline
+$5$ &	R12:Dibujar dentro del módulo 1 & Proyectar el trazo obtenido en el R11 dentro del modulo 1 & Error en la Conexión &	Verificar el envió de paquetes
+\\ \hline
+\end{tabular}
+\caption{Pruebas realizadas al Módulo 2.}
+\label{tab:5.2}
+\end{table}
+
+\newpage
+\section{Pruebas - Módulo 3: Proyección sobre el área de trabajo}
+
+En esta sección se muestran las pruebas que se llevaron a cabo en el Modulo 3, para determinar la funcionalidad y el cumplimiento de los requerimientos, para verificar si la funcionalidad es la correcta. En el Cuadro \ref{tab:5.3} se muestra los resultados de las pruebas que se llevaron a cabo para el modulo  y las correcciones para cumplir con las condiciones y requerimientos:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{1.5cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}%{|p{4.8cm}|p{11cm}|}
+\hline
+No. de Prueba & Requerimientos Probados & Entrada & Resultados & Correciones\\ \hline
+$1$ &	R13: Trabajar conjuntamente proyector y Kinect & Vidrio & Se puede trabajar conjuntamente sin problema alguno. & Ninguna\\ \hline
+$2$ &	R14: Proyectar sobre el área de trabajo & Vidrio & La imagen de salida traspasa el vidrio & Cambiar la superficie \\ \hline
+$3$ &	R14: Proyectar sobre el área de trabajo & Vidrio polarizado & La captura de la cámara se reduce & Cambiar superficie \\ \hline
+$4$ &	R15: Trabajar sin interferencia de la sombra que produzca la mano & Vidrio 
+Polarizado & Se puede trabajar pero se reduce la velocidad de captura de la tag por la condición de luz & Cambiar superficie.\\ \hline
+$5$ & R14: Proyectar sobre el área de trabajo & Pared & Imagen proyectada, no es la más apta, solución temporal & Identificar otro tipo de superficie adecuado y de bajo costo\\ \hline
+$6$ &	R15: Trabajar sin interferencia de la sombra que produzca la mano & Pared & No afecta la sombra ya que no se proyecta directamente en el área de trabajo & 
+Identificar otro tipo de superficie adecuado y de bajo costo.\\ \hline 
+\end{tabular}
+\caption{Pruebas realizadas al Módulo 3.}
+\label{tab:5.3}
+\end{table}
+
+\newpage
+\section{Pruebas - Módulo 4: Implementación de herramientas físicas}
+
+En esta sección se muestran las pruebas que se llevaron a cabo en el Modulo 4, para determinar la funcionalidad y el cumplimiento de los requerimientos, para verificar si la funcionalidad es la correcta. En el Cuadro \ref{tab:5.4} se muestra los resultados de las pruebas que se llevaron a cabo para el modulo  y las correcciones para cumplir con las condiciones y requerimientos:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{1.5cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}%{|p{4.8cm}|p{11cm}|}
+\hline
+No. de Prueba & Requerimientos Probados & Entrada & Resultados & Correciones\\ \hline
+$1$ & R16:Reconocimiento de la herramienta & Tag de alguna herramienta & Las herramientas se reconocieron a excepción de línea y mano alzada & Cambiar el grosor del dibujo interno de la tag \\ \hline
+$2$ &	R17:Dibujar con el uso de la herramienta & Colocar la tag frente a la cámara y después realizar desplazamiento de mouse sobre el área de trabajo & Trazo correcto & Ninguna\\ \hline
+$3$ & R18,R19,R20:Cambios de la figura con el uso de la herramienta & Colocar la tag que indica modificación y realizar un click dentro de la figura & No se reconoció las tags de modificación & Modificar dibujo interior de las herramientas\\ \hline
+$4$ &	R16:Reconocimiento de la herramienta & Tag Mano alzada & Reconocida & 	Ninguna.\\ \hline
+$5$ &	R16:Reconocimiento de la herramienta & Tag Linea &	Reconocida &	Ninguna\\ \hline
+$6$ &	R18,R19,R20:Cambios de la figura con el uso de la herramienta & Colocar la tag que indica modificación y realizar un click dentro de la figura & Reconoció tag pero no identifico giro & Modificar método de reconocimiento de rotación.\\ \hline 
+\end{tabular}
+\caption{Pruebas realizadas al Módulo 4.}
+\label{tab:5.4}
+\end{table}
