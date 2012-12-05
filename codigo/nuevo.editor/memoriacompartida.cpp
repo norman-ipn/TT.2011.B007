@@ -6,9 +6,9 @@
 
 int main(int argc, char* argv[])
 {
-		int shmid; 
-		int *variable;
-		key_t llave;
+		int shmid = 0; 
+		int *variable = NULL;
+		key_t llave = 0;
 		
 		llave = ftok("kinectTool", 'k');
 		

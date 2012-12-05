@@ -13,11 +13,19 @@ int xx = 0;
 int yy = 0;
 int lastState = 1;
 int currentState = 1;
-int shmid; 
-int *variable;
-key_t llave;
+int shmid = 0; 
+int *variable = NULL;
+key_t llave = 0;
 
 
+/*
+   Dibuja una lista de figuras en una imagen.
+
+   Parámetros: 
+      image	la imagen donde dibuja.
+      list 	la lista de figuras que dibuja en la imagen.
+
+*/
 void drawList(IplImage* image, std::list<Figure> &list)
 {
 	std::list<Figure>::iterator pos;
