@@ -3,11 +3,11 @@ view: documento.pdf
 
 documento.pdf: documento.dvi
 	dvipdf documento.dvi
-documento.dvi: documento.tex capitulo1.tex
+documento.dvi: documento.tex capitulo1.tex capitulo2.tex
 	latex documento.tex
 
 clean:
-	rm documento.pdf
-	rm documento.dvi
+	rm *.dvi
 	rm *.log
 	rm *.aux
+	rm *.pdf
