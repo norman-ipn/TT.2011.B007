@@ -192,3 +192,513 @@ $ cd Kinect
 \caption{Crear carpeta Kinect.}
 \label{fig:8.5}
 \end{figure}
+
+Y extraer los archivos descargados en la carpeta {\it kinet}\\\\
+
+Paso 2  Actualizar los repositorios (Figura \ref{fig:8.6}).
+\begin{verbatim}
+sudo apt-get update
+\end{verbatim}
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.7]{maninstall/figura6ActualizarRepositorios.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Crear carpeta Kinect.}
+\label{fig:8.6}
+\end{figure}
+
+\begin{itemize}
+    \item Instalar estos archivos que son necesarios para la correcta instalación de los {\it drivers}
+\begin{verbatim}
+$ sudo apt-get install mono-complete
+$ sudo apt-get install libusb-1.0-0-dev
+$ sudo apt-get install-dev freeglut3
+\end{verbatim}
+\end{itemize}
+
+Paso 3  De las carpetas extraídas en el paso 1, se les cambiaran el nombre a {\it OpenNI, Sensor, Nite}, respectivamente, para la parte de {\it SensorKinect} descarguelo del siguiente link:
+https://github.com/avin2/SensorKinect
+\begin{itemize}
+    \item Dándole en la pestaña {\it dowloands} y extraer el paquete en la carpeta \textquotedblleft kinect\textquotedblright (Figura \ref{fig:8.7}).
+\end{itemize}
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.9]{maninstall/figura7DescargaSensorkinect.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Descarga Sensor Kinect.}
+\label{fig:8.7}
+\end{figure}
+
+\begin{itemize}
+    \item Cambiar el nombre del folder a {\it SensorKinect} (Figura \ref{fig:8.8}).
+\end{itemize}
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.9]{maninstall/figura8Sensorkinect.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Sensor Kinect.}
+\label{fig:8.8}
+\end{figure}
+
+\newpage
+Paso 4  Ir a la carpeta OpenNI, Sensor, Nite y ejecutar  sudo ./install.sh (Figura \ref{fig:8.9}).
+\begin{verbatim}
+$ cd
+$ cd Kinect
+$ cd OpenNI
+$ sudo ./Install.sh
+\end{verbatim}
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.9]{maninstall/figura9EinstallshOpenNI.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Install.sh OpenNI.}
+\label{fig:8.9}
+\end{figure}
+
+\begin{verbatim}
+$ cd .. / Sensor 
+$ sudo. / install.sh
+\end{verbatim}(Figura \ref{fig:8.10})
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.9]{maninstall/figura10EinstallshSensor.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Install.sh Sensor.}
+\label{fig:8.10}
+\end{figure}
+
+\begin{itemize}
+    \item Antes de ejecutar  {\it install.sh  de Nite}, cambiar en los  archivos {\it .xml}  la linea de la licencia y  escribir  la licencia que se indica \textquotedblleft 0KOIk2JeIBYClPWVnMoRKn5cdY4 =\textquotedblright, para ello entrar en la carpeta de {\it kinect}, despues la de {\it Nite} y posteriormente a la de {\it Data} donde se encuentran los archivos, como se muestra en las figuras (Figura \ref{fig:8.11}, Figura \ref{fig:8.12} y Figura \ref{fig:8.13}).
+\end{itemize}
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.9]{maninstall/figura11carpetaData.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Capeta Data.}
+\label{fig:8.11}
+\end{figure}
+
+\newpage
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.8]{maninstall/figura12ArchivoxmlSinlicencia.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Archivo xml sin licencia.}
+\label{fig:8.12}
+\end{figure}
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.7]{maninstall/figura13ArchivoxmlConlicencia.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Archivo xml con licencia.}
+\label{fig:8.13}
+\end{figure}
+
+\newpage
+\begin{verbatim}
+$ cd .. / Nite 
+$ sudo. / Install.sh
+\end{verbatim}(Figura \ref{fig:8.14})
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.9]{maninstall/figura14EinstallshNite.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{install.sh de Nite.}
+\label{fig:8.14}
+\end{figure}
+
+\begin{itemize}
+    \item Utilice esta licencia cuando se le preguntó durante la instalación:\\
+\textquotedblleft 0KOIk2JeIBYClPWVnMoRKn5cdY4 =\textquotedblright
+
+    \item Para el SensorKinect sea los siguiente desde una terminal: (Figura \ref{fig:8.15})
+\begin{verbatim}
+$ cd .. / SensorKinect/Platform/Linux-x86/CreateRedist/
+$ sudo. / RedistMaker
+\end{verbatim}
+\end{itemize}
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.9]{maninstall/figura15RedistMaker.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{RedistMaker.}
+\label{fig:8.15}
+\end{figure}
+
+\begin{itemize}
+    \item Para poder ejecutar este comando, se deben cambiar los permisos de ese archivo, como se muestra a continuación:
+\begin{verbatim}
+$sudo chmod 755 RedistMaker 
+\end{verbatim}
+(Figura \ref{fig:8.16})
+\end{itemize}
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.9]{maninstall/figura16PermisosRedistMaker.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Permisos  para RedistMaker.}
+\label{fig:8.16}
+\end{figure}
+
+\newpage
+\begin{itemize}
+    \item Después se  hará lo siguiente:
+\begin{verbatim}
+$cd.. /kinect/SensorKinect/Platform/Linux/Redist/Sensor-Bin-Linux-x86-v5.1.0.25
+$sudo ./install.sh
+
+sudo chmod 755 install.sh 
+\end{verbatim}
+(Figura \ref{fig:8.17})
+\end{itemize}
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.9]{maninstall/figura17PermisosEjecucioninstallsh.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Permisos y ejecución del archivo install.sh.}
+\label{fig:8.17}
+\end{figure}
+
+Paso 5  Comprobando si todo está funcionando bien
+\begin{itemize}
+    \item Conecte que {\it Kinect} y ejecutar los ejemplos de la carpeta {\it OpenNI}
+\begin{verbatim}
+$ cd ~ /Kinect/OpenNI/Samples/bin/Release/
+\end{verbatim}
+
+    \item Suponiendo que la carpeta de {\it Kinect} se encuentra en la carpeta de inicio, de lo contrario ir a la carpeta respectiva (Figura \ref{fig:8.18}).
+\begin{verbatim}
+$. / NiViewer
+\end{verbatim}
+\end{itemize}
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.9]{maninstall/figura18EjecutarNiViewer.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Ejecutar NiViewer.}
+\label{fig:8.18}
+\end{figure}
+
+Usted debe obtener el mapa de profundidad y la secuencia de imágenes en su ventana (Figura \ref{fig:8.19}).
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.7]{maninstall/figura19MapaProfundidad.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Mapa de profundidad.}
+\label{fig:8.19}
+\end{figure}
+
+\begin{itemize}
+    \item Si en caso de que  salga {\it \textquotedblleft Open failed: Failed to set USB interface!\textquotedblright}, escribir el siguiente comando como se muestra en la Figura \ref{fig:8.20}:
+\begin{verbatim}
+$ sudo rmmod gspca_kinect
+\end{verbatim}
+    \item Y volver a ejecutar el ejemplo
+\end{itemize}
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.9]{maninstall/figura20rmmodgspcaKinect.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{rmmod gspca kinect.}
+\label{fig:8.20}
+\end{figure}
+
+Después de concluir la guía anterior, se deben poder correr los ejemplos de {\it OpenNI} sin problema.
+
+
+\subsection{Pasos para la Instalación de OpenCV}
+
+Se recomienda que use estos paquetes(Cuadro \ref{tab:8.2}):
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}%{|p{4.8cm}|p{11cm}|}
+\hline
+Paquete & Versión\\ \hline
+x264 & x264-snapshot-20111122-2245-stable\\ \hline
+ffmpeg & ffmpeg-0.8.12\\ \hline
+vl4 &	v4l-utils-0.8.3-1\\ \hline
+opencv &	OpenCV-2.3.1\\ \hline
+\end{tabular}
+\caption{Paquetes de OpenCV.}
+\label{tab:8.2}
+\end{table}
+
+\begin{itemize}
+    \item Todos los paquetes que se instalan deben ser usados recién desempaquetados, ya que si se utilizan un paquete previamente descomprimido, puede que el paquete ya haya sido alterado por otra configuración. Por lo que no se puede saber que ocurra.
+\end{itemize}
+
+Para instalar y configurar {\it OpenCV 2.3.1}, realice los siguientes pasos:
+
+Paso 1  Quitar todas las versiones instaladas de ffmpeg y x264 introduciendo el siguiente comando como se muestra en la Figura \ref{fig:8.21}:
+
+\begin{verbatim}
+sudo apt-get remove ffmpeg x264 libx264-dev
+\end{verbatim}
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.9]{maninstall/figura21RemoverFFmpegx264.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Remover las versiones de ffmpeg y x264.}
+\label{fig:8.21}
+\end{figure}
+
+Paso 2  Obtenga todas las dependencias para {\it x264 y ffmpeg} mediante la introducción de los siguientes comandos como se muestra en la Figura \ref{fig:8.22}:
+\begin{verbatim}
+sudo apt-get update
+
+sudo apt-get install build-essential checkinstall git cmake libfaac-dev
+libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev
+libsdl1.2-dev libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev
+libxfixes-dev libxvidcore-dev texi2html yasm zlib1g-dev
+\end{verbatim}
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.9]{maninstall/figura22InstalacionPaquetesNecesarios.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Instalación de paquetes necesarios.}
+\label{fig:8.22}
+\end{figure}
+
+Paso 3  Descargar e instalar gstreamer introduciendo el siguiente comando (Figura \ref{fig:8.23}):
+\begin{verbatim}
+sudo apt-get install libgstreamer0.10-0 libgstreamer0.10-dev gstreamer0.10-tools
+gstreamer0.10-plugins-base libgstreamer-plugins-base0.10-dev
+gstreamer0.10-plugins-good gstreamer0.10-plugins-ugly gstreamer0.10-plugins-bad
+gstreamer0.10-ffmpeg
+\end{verbatim}
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.9]{maninstall/figura23InstalacionGstreamer.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Instalación de gstreamer.}
+\label{fig:8.23}
+\end{figure}
+
+Paso 4  Descargue e instale instale x264.
+\begin{itemize}
+	\item Descargar una instantánea reciente estable de x264 de  ftp://ftp.videolan.org/pub/videolan/x264/snapshots/ \\
+La versión exacta no parece importar, he utilizado la versión x264-snapshot-20110808-2245-stable.tar.bz2.
+	\item Configurar y compilar las bibliotecas x264 introduciendo los siguientes comandos (Figura \ref{fig:8.24} y Figura \ref{fig:8.25}):
+\begin{verbatim}
+./configure --enable-static
+make
+sudo make install
+\end{verbatim}
+\end{itemize}
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.8]{maninstall/figura24Configuracionx264.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Configuración de x264.}
+\label{fig:8.24}
+\end{figure}
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.8]{maninstall/figura25Compilacionx264.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Compilación de x264.}
+\label{fig:8.25}
+\end{figure}
+
+Paso 5  Descargue e instale instalar ffmpeg.
+\begin{itemize}
+    \item Descargar la versión 0.8.x de http://ffmpeg.org/download.html\\\\
+Las versiones de OpenCV anteriores a 2.3.1 requieren ffmpeg 0.7.x.
+    \item Configurar y compilar ffmpeg mediante la introducción de los siguientes comandos en una terminal (Figura \ref{fig:8.26} y Figura \ref{fig:8.27}):
+\begin{verbatim}
+./configure --enable-gpl --enable-libfaac --enable-libmp3lame
+--enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libtheora
+--enable-libvorbis --enable-libx264 --enable-libxvid --enable-nonfree
+--enable-postproc --enable-version3 --enable-x11grab
+make
+
+sudo make install
+\end{verbatim}
+\end{itemize}
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.8]{maninstall/figura26ConfiguracionFFmpeg.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Configuración de ffmpeg.}
+\label{fig:8.26}
+\end{figure}
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.8]{maninstall/figura27CompilacionFFmpeg.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Compilación de ffmpeg.}
+\label{fig:8.27}
+\end{figure}
+
+\newpage
+Paso 6  Descargar e instalar gtk introduciendo el siguiente comando (Figura \ref{fig:8.28}):
+\begin{verbatim}
+sudo apt-get install libgtk2.0-0 libgtk2.0-dev
+\end{verbatim}
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.9]{maninstall/figura28InstalacionGtk.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Instalación de gtk.}
+\label{fig:8.28}
+\end{figure}
+
+Paso 7  Descargue e instale {\it libjpeg} introduciendo el siguiente comando:
+\begin{verbatim}
+sudo apt-get install libjpeg62 libjpeg62-dev
+\end{verbatim}
+
+Paso 8  Descargar {\it QT}, se puede hacer desde el centro de {\it software de Ubuntu}, se debe de instalar todos los paquetes que aparecen con una paloma, como se muestra en la Figura \ref{fig:8.29}.
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.9]{maninstall/figura29PaquetesQT.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Paquetes de QT.}
+\label{fig:8.29}
+\end{figure}
+
+Paso 9  Desde el centro de {\it software de Ubuntu}, se instalara el paquete vl4 panel, como se muestra en la Figura \ref{fig:8.30}.
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.9]{maninstall/figura30PaqueteVl4panel.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Paquete de vl4 panel.}
+\label{fig:8.30}
+\end{figure}
+
+\newpage
+Paso 10  Para la instalación de los paquetes referentes a v4l que se muestran en la Figura \ref{fig:8.31}, utilizaremos {\it synaptic}, puede buscar el icono de la aplicación ó desde una terminal escribir el siguiente comando:
+\begin{verbatim}
+sudo synaptic
+\end{verbatim}
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.9]{maninstall/figura31Paquetesvl4.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Paquetes de vl4.}
+\label{fig:8.31}
+\end{figure}
+
+Paso 11  Desde {\it synaptic}, buscar e instalar los siguientes paquetes:
+\begin{verbatim}
+libavformat-dev
+libjasper-dev
+libjasper-runtime
+\end{verbatim}
+
+Paso 12  Descargar e instalar  {\it OpenCV}
+\begin{itemize}
+    \item Descargar la version 2.3.1 de {\it OpenCV}  desde el siguiente enlace:\\
+http://sourceforge.net/projects/opencvlibrary/files/
+
+    \item Pasamos el paquete a la carpeta de home, y a partir de una terminal usamos los siguientes comandos:
+\begin{verbatim}
+tar xvf OpenCV-2.3.1.tar.bz2
+cd OpenCV-2.3.1/
+mkdir OpenCV_Bin
+cd OpenCV_Bin
+\end{verbatim} 
+\end{itemize}
+
+\newpage
+Paso 13  Instalar cmake-gui desde synaptic como se ve en la Figura \ref{fig:8.32}:
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.9]{maninstall/figura32cmakegui.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{cmake-gui.}
+\label{fig:8.32}
+\end{figure}
+
+Paso 14  Se entra a cmake-gui como administrador, para ello nos encontramos en el directorio de {\it OpenCV\_Bin} \\\\
+
+En las siguientes figuras (Figura \ref{fig:8.33}, Figura \ref{fig:8.34} y Figura \ref{fig:8.15}) se muestra como debe estar configurado cmake:
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.9]{maninstall/figura33Parte1Configcmake.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Parte 1 Configuración de cmake.}
+\label{fig:8.33}
+\end{figure}
+
+\newpage
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.8]{maninstall/figura34Parte2Configcmake.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Parte 2 Configuración de cmake.}
+\label{fig:8.34}
+\end{figure}
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.8]{maninstall/figura35Parte3Configcmake.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Parte 3 Configuración de cmake.}
+\label{fig:8.35}
+\end{figure}
+
+\begin{itemize}
+    \item Una vez que se tiene {\it cmake}, como se muestra en las imágenes de arriba se le da al botón de configurar y después al de generar.
+
+Tal vez algunas casillas estén apagadas, después de que lo genere podrá marcarlas vuelva a repetir el paso de configurar y al de generar, para que aparezcan las nuevas opciones de {\it Openni}
+\end{itemize}
+
+Paso 15  Después de que se genero cerramos {\it cmake}, proseguimos a escribir los siguientes comandos en una terminal desde la ruta ../OpenCV-2.3.1/OpenCV\_Bin:
+\begin{verbatim}
+sudo make
+sudo make install
+\end{verbatim}
+Si no se omitió algún paso, no tendrá ningún problema.\\\\
+
+Paso 16  Crear un archivo, desde una terminal se escribirá los siguientes comandos:
+\begin{verbatim}
+sudo gedit /etc/ld.so.conf.d/opencv.conf
+\end{verbatim}
+\begin{itemize}
+    \item En el documento que apareció, escribir la siguiente línea, como se muestra en la Figura \ref{fig:8.36}.
+\begin{verbatim}
+/usr/local/lib
+\end{verbatim}
+\end{itemize}
+
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.8]{maninstall/figura36CrearArchivo.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Crear archivo.}
+\label{fig:8.36}
+\end{figure}
+
+\begin{itemize}
+    \item Se guarda y se cierra el documento
+\end{itemize}
+
+Paso 17  Configurar las librerías, para ello desde una terminal debemos estar  en la siguiente ruta:   ../OpenCV-2.3.1/OpenCV\_Bin y usar la siguiente linea de comando(Figura \ref{fig:8.37}):
+\begin{verbatim}
+sudo ldconfig
+\end{verbatim}
+
+\begin{itemize}
+    \item Por último, agregamos dos líneas a el documento:
+\begin{verbatim}
+sudo gedit /etc/bash.bashrc
+\end{verbatim}
+    \item Hasta el final del documento ponemos las líneas
+\begin{verbatim}
+PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
+export PKG_CONFIG_PATH
+\end{verbatim}
+\end{itemize}
+
+\newpage
+\begin{figure}[h1]
+\centering
+\includegraphics[scale=0.8]{maninstall/figura37AgregarLineasArchivo.ps} %[0cm,0cm][16.5cm,16cm]
+\caption{Agregar líneas al archivo.}
+\label{fig:8.37}
+\end{figure}
+
+Guardamos, cerramos, y reiniciamos nuestro computador, ahora estamos listos para utilizar y compilar programas con opencv y openni. Para compilar usamos la línea
+\begin{verbatim}
+g++ `pkg-config opencv --cflags` my_code.cpp  -o my_code `pkg-config opencv
+--libs` 
+\end{verbatim}
+

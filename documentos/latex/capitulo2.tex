@@ -1,84 +1,38 @@
 \chapter{Análisis}
 
-En este capítulo se describe el análisis realizado para la creación del sistema.
-El análisis se presenta según los cuatro módulos que se reconocieron: 
+En este capítulo se describe en análisis realizado para la creación del sistema. 
+El análisis se presenta según los cuatro módulos que se reconocieron en un principio: 
 
 \begin{enumerate}
-	\item Editor Básico de Dibujo.
-	\item Reconocimiento de trazos a mano alzada.
-	\item Proyección sobre el Área de trabajo.
+	\item Editor Básico de Dibujo
+	\item Reconocimiento de trazos a mano alzada
+	\item Proyección sobre el Área de trabajo 
 	\item Implementación de las herramientas físicas para el dibujo.
 \end{enumerate}
 
-Con el análisis correspondiente a los módulos tres y cuatro se fijarán las especificaciones 
-necesarias, además se mencionarán todas aquellas problemáticas detectadas en los procesos.
-Una vez que se tienen los procesos por módulo, se mostrará el estudio de factibilidad que 
-se realizo al correspondiente proyecto, para ver la disponibilidad de los recursos que 
-necesitaron en la realización del sistema, posteriormente se expondrá la definición de 
-requerimientos, y finalizar este capítulo con la especificación de requerimientos.
+Con el análisis correspondiente a los módulos tres y cuatro se fijarán las especificaciones necesarias, además se mencionarán todas aquellas problemáticas detectadas en los procesos.\\ 
 
-La fase de análisis tiene como objetivo detectar los problemas que se puedan 
-manifestar durante los procesos dentro de cada uno de los módulos.
+Una vez que se tiene los procesos por módulo, se mostrará el estudio de factibilidad que se realizo al correspondiente proyecto, para ver la disponibilidad de los recursos que necesitaron en la realización del sistema, posteriormente se expondrá la definición de requerimientos, y finalizar este capítulo con la especificación de requerimientos.
 
+\section{Módulo 1: Editor básico de dibujo}
+\subsection{Introducción}
 
-%%
-%% Aquí falta una sección que explique como llegaron a la conclusión de
-%% que utilizarían cuatro módulos..., problablemente lo tengan en el documento de TT1.
-%%
-
-
-\section{Módulo: Editor básico de dibujo}
-
-Este módulo se encarga de realizar las tareas básicas dentro de una aplicación de dibujo. 
-Se analizaron los procesos a efectuar dentro del módulo y se identificaron
-las siguientes tareas relacionadas al dibujo:
-
-\begin{itemize}
- \item Trazo a mano alzada.
- \item Línea.
- \item Circunferencia.
- \item Elipse.
- \item Polígono (3 a 6 lados).
-\end{itemize}
-
+En las sub-secciones siguientes,  se definen los procesos que se llevan a cabo en el modulo uno,  el cual se estructura de funciones básicas de dibujo, las cuales son: mano alzada, línea, circunferencia, elipse y polígonos (3 a 6 lados), así como detectar los problemas que puedan surgir.
 
 \subsection{Objetivo}
 
-Analizar los procesos necesarios para el desarrollo de un editor de dibujo y detectar 
-posibles problemas por medio de la realización de pruebas que se documenten para precisar 
-los requerimientos y redactar una propuesta con bases firmes y confiables.
+Analizar los procesos necesarios para el desarrollo de un editor de dibujo y detectar posibles problemas por medio de la realización de pruebas que se documentan para precisar los requerimientos y redactar una propuesta con bases firmes y confiables.
 
 \subsection{Análisis y descripción de procesos}
+A continuación se describen los procesos correspondientes al módulo uno
 
-A continuación se describen los procesos correspondientes al módulo uno, 
-El cuadro \ref{tab:mano_alzada} muestra el análisis del procedimiento de dibujo
-a mano alzada. 
+\subsubsection{Trazo a Mano Alzada}
+Objetivo: Realizar un trazo a mano alzada, es decir a pulso.\\\\
+Descripción: Es un trazo que no requiere de reglas ni herramientas de medición exactas o auxiliares, solo con el movimiento de tu muñeca o pulso, Pn son el conjunto de puntos que conforman el trazo. Dado el conjunto de puntos $P_n(x_n,y_n)$ se encenderá  un pixel por cada punto.\\\\
+Datos de entrada: $P_n(x_n,y_n)$\\\\
+Datos de salida: Trazo a mano alzada.\\\\
+Problemas: la velocidad de desplazamiento al aumentar reduce el conjunto de puntos.
 
-\begin{table}[h]
-\centering
-\begin{tabular}{|l|p{13cm}|} \hline
-{\bf Procedimiento}:& {\bf Trazo a Mano Alzada}. \\\hline\hline
-{\bf Objetivo}:&  Realizar un trazo a mano alzada, es decir a pulso. \\\hline
-{\bf Descripción}:& Es un trazo que no requiere de reglas ni herramientas de medición exactas 
-o auxiliares, 
-sólo con el movimiento de la muñeca o pulso.
-El trazo estára compuesto por varios puntos, el enésimo punto se denotará como $P_n$ 
-y el punto estará determinado por sus dos coordenadas $P_n(x_n,y_n)$. 
-Cada punto corresponde a un pixel en la pantalla. \\\hline
-{\bf Datos de entrada}:& $P_n(x_n,y_n)$\\\hline
-{\bf Datos de salida}:& Trazo a mano alzada. \\\hline
-{\bf Problemas}:&La velocidad de desplazamiento del ratón puede ser muy grande y,
-debido a la frecuencia de muestreo del {\it hardware}, el número de puntos registrados
-se reduce y el trazo parecerá realizado con líneas y no un trazo a mano alzada.\\\hline
-\end{tabular}
-\caption{Análisis del proceso de dibujo a mano alzada.}
-\label{tab:mano_alzada}
-\end{table}
-
-
-%%
-%% Pendiente: Pasar estas secciones al formato del primer cuadro.
-%%
 \subsubsection{Trazar una Línea recta}
 Objetivo: Realizar trazos rectos a partir de dos puntos.\\\\
 Descripción: Es la sucesión continua de puntos en una misma dirección, donde $P_1(x_1,y_1)$ es la posición de partida  y $P_2(x_2,y_2)$ es la posición final. Dados los puntos $P_1(x_1,y_1)$ y $P_2(x_2,y_2)$ se traza una línea entre estos por medio de la siguiente ecuación.
@@ -116,20 +70,20 @@ Datos de entrada: $P_1(x_1,y_1)$ y $P_2(x_2,y_2)$\\\\
 Datos de salida: Elipse  entre $P_1(x_1,y_1)$ y $P_2(x_2,y_2)$\\\\
 Problemas: Se puede apreciar una deformación mayor cuando la distancia entre los puntos sea menor, al ser pixeles de forma cuadrada.
 
+\section{Módulo 2: Reconocimiento de trazos a mano alzada}
+\subsection{Introducción}
 
+En las sub-secciones de este apartado, se definen los procesos que se llevan a cabo en el modulo dos, donde se reconoce  el trazo a mano alzada por medio de {\it Kinect}\texttrademark, dicho trazo será realizado por el usuario en el área de trabajo que estará delimitada, así como detectar los problemas que se puedan manifestar en los procesos.
 
-\section{Módulo: Reconocimiento de trazos a mano alzada}
+\subsection{Objetivo}
 
-Este módulo tiene como objetivo reconocer el trazo a mano alzada que realiza el usuario. 
-El trazo del usuario será sensado mediante el dispotivo {\it Kinect}\texttrademark,
-y deberá ser realizado en el área de trabajo delimitada.
+Analizar los problemas que surjan en los procesos que involucra la realización de éste módulo, de igual manera se documentarán las pruebas hechas con esto corregiremos errores para cumplir con los requerimientos establecidos.
 
+\subsection{Análisis y descripción de procesos}
 
-%% documentar pruebas debe ir en el capítulo de pruebas.
-%% Se documentarán las pruebas hechas con esto corregiremos errores para cumplir con los requerimientos establecidos.
+Este apartado describe los procesos pertinentes para la implementación del módulo dos.
 
-
-\subsection{Integración del Kinect\texttrademark}
+\subsubsection{Integración del Kinect\texttrademark}
 Objetivo: la computadora debe reconocer el dispositivo {\it Kinect}\texttrademark. \\\\
 Descripción: Mediante el {\it driver OpenNI} se hará la comunicación entre el dispositivo y la computadora personal, para poder realizar capturas de imágenes, utilizar y procesar la información recibida.\\\\
 Datos de entrada: Datos recibidos por el sensor.\\\\
@@ -157,12 +111,18 @@ Datos de entrada: $P_1(x_1,y_1)$\\\\
 Datos de salida: $P_n(x_n,y_n)$, trazo realizado.\\\\
 Problemas: Si la velocidad de desplazamiento varía de la velocidad de procesamiento, el trazo realizado podría no ser igual al movimiento del dedo.
 
-\section{Módulo: Proyección sobre el área de trabajo}
+\section{Módulo 3: Proyección sobre el área de trabajo}
+\subsection{Introducción}
 
-Este módulo muestra la imagen que muestra el proyector en el área de trabajo,
-de esta manera el usuario podrá visualizar los trazos realizados.  
-El análisis de este módulo requirió probar distintas configuraciones, 
-tanto del proyector como del dispositivo {\it Kinect}\texttrademark.
+En la sub-sección  del modulo 3, se definen los procesos que se llevan a cabo en el modulo, el cual se refiere a la imagen que nos proporcionará un proyector en el área de trabajo,  donde el usuario podrá visualizar los trazos realizados. Así  mismo se pretende detectar problemas en los procesos.
+
+\subsection{Objetivo}
+
+Analizar los procesos pertinentes del módulo 3 por medio de distintas configuraciones tanto del proyector como de {\it Kinect}\texttrademark para el desarrollo del mismo cumpliendo completamente con el requerimiento establecido.
+
+\subsection{Análisis y descripción de procesos}
+
+Este apartado describe los procesos correspondientes al módulo tres.
 
 \subsection{Mostrar trazos realizados}
 Objetivo: Poder vizualizar en el área de trabajo los trazos realizados.\\\\
@@ -191,61 +151,24 @@ Datos de entrada: Secuencia de video continuo.\\\\
 Datos de salida: No hay datos de salida visibles al usuario, internamente queda seleccionada una opción.\\\\
 Problemas: La {\it tag} puede no estar posicionada correctamente para su identificación.
 
-\section{Estudio de Factibilidad}
+\section{Estudio de Factibilidad.}
 
-Después de analizar los módulos del sistema, el estudio de factibilidad
-permitió confirmar la disponibilidad de los recursos necesarios
-para llevar a cabo este trabajo terminal. Se revisaron tres aspectos
-de la factibidad, la operativa, la técnica y la económica. 
-En todos ellos se concluyo que la realización de este trabajo terminal es 
-{\bf factible}. Las siguientes secciones detallan el análisis realizado.
-
-
-%% Referencia ??
-%%http://www.slideshare.net/Yuyo-R10/factibilidad-tecnica-operativa-y-economica-11765760#btnNext
+Después de definir la problemática presente  y  establecer las consideraciones  de hardware y software, es conveniente realizar un estudio de factibilidad  para  el desarrollo del sistema, se muestra el análisis técnico y operativo que implica la implementación del sistema.
 
 \subsection{Factibilidad operativa}
 
-%% Requerimiento de la aplicación: fácil uso. Que la aplicación sea fácil de usar.
-%% Cómo se mide la facilidad de uso de una aplicación?
-
-Para determinar en que grado el sistema se utilizará y operará como se planea se 
-realizaron .... 
-%% encuestas? revisión de artículos? estadísticas??
+Para un mejor alcance como proyecto se desarrollará una aplicación de fácil uso, de tal forma que sin mucha dificultad, un usuario no experimentado, pueda adaptarse y aprovechar al máximo las facilidades que este brinde. 
+Los usuarios podrán visualizar la información que ellos soliciten, al interactuar con el editor y las herramientas conjuntamente con el {\it Kinect}\texttrademark, claro que solo con las operaciones mencionadas, no se podrá hacer algo que no esté indicado en el sistema.\\\\ 
+Al  ir implementando  módulo por módulo, facilitará el trabajo para el avance de los posteriores módulos, y darse una idea de las posibles {\it tag's} que se necesitarán usar para el Trabajo Terminal. 
+Estamos conscientes de aceptar los cambios y mejoras que el trabajo terminal ofrezca dentro del periodo de realización, llegando a la conclusión de que el sistema es factible operativamente, ya que se cuenta con la aceptación y la tecnología para desarrollar el sistema con éxito.
 
 \subsection{Factibilidad técnica}
 
-Para realizar el sistema se dectaron las siguientes necesidades:
-\begin{itemize}
- \item {\it Hardware}:
-  \begin{itemize}
-   \item Sensor {\it Kinect}\texttrademark.
-   \item Proyector de video. 
-   \item Equipo de cómputo con capacidad de ejecutar los diferentes
-programas y soportar la velocidad de comunicación con el sensor {\it Kinect}\texttrademark y
-el proyector de video.
-  \end{itemize}
- \item {\it Software}:
-   \begin{itemize}
-    \item Sistema operativo.
-    \item Entorno de programación.
-    \item De oficina.
-   \end{itemize}
-\end{itemize}
-
-Todos estos requerimientos se satisfacen dado que, el equipo de trabajo cuenta con tres 
-computadora portátiles ({\it laptops}) y un dispositivo {\it Kinect}\texttrademark,
-además de que la Escuela Superior de Computo (E.S.COM.) prestará el proyector.
-
-Los equipos de cómputo se utilizaron para desarrollar y hacer pruebas colectivamente con 
-el dispositivo {\it Kinect}\texttrademark.
+Actualmente para la realización del proyecto se cuenta con tres {\it laptops}, un {\it Kinect}\texttrademark y un proyector, prestado por la Escuela Superior de Computo (ESCOM). Estos equipos de cómputo se utilizaron para desarrollar y hacer pruebas colectivamente con el {\it Kinect}\texttrademark, aunque en cuestiones con el dispositivo solo es necesario un equipo de cómputo.\\\\
 
 De acuerdo a la tecnología necesaria para la implementación del Sistema se evaluó bajo dos enfoques: {\it hardware y software}.\\\\ 
 
-En cuanto a {\it hardware}  existente, no se requirió realizar inversión inicial 
-para la adquisición del mismo, ya que con lo que se contaba satisfacía 
-los requerimientos establecidos, tanto para el desarrollo y puesta en 
-funcionamiento del sistema propuesto.
+En cuanto a {\it hardware}  existente, no se requirió realizar  inversión  inicial para la adquisición del mismo, ya que con lo que se contaba satisfacía los requerimientos establecidos, tanto para el desarrollo y puesta en funcionamiento del sistema propuesto.\\\\
 
 A continuación se muestra  la descripción de las computadoras personales (Cuadros \ref{tab:2.1}, \ref{tab:2.2} y \ref{tab:2.3}) que se utilizaron para la realización del sistema, asi como las caracteristicas del kinect(Cuadro \ref{tab:2.4}):
 
@@ -372,19 +295,7 @@ Drivers & Si & Si\\ \hline
 
 En conclusión se utilizará la distribución {\it Ubuntu} del sistema operativo {\it Linux}, ya que es un software libre y no requiere de herramientas propietarias; el {\it Driver OpenNi} que nos proporciona el middleware Nite, el cual es soportado por la empresa {\it PRIMESENSE}, la cual desarrollo el dispositivo {\it Kinect}\texttrademark  y  {\it OpenCv} que es una {\it API}  para visión por computadora y se utilizado en proyectos con {\it Kinect}\texttrademark.
 
-\subsection{Factibilidad Económica}
-
-
-%% Hace falta llenar este apartado...
-
-
 \section{Requerimientos}
-
-El análisis de los requerimientos permite establer aquellas 
-características que se diseñarán en la siguiente etapa.
-%% Referencia???
-Para este trabajo terminal se identificaron los siguientes requerimientos
-%% Funcionales, no funcionales???
 
 R1: El módulo 1 del sistema permite dibujar a mano alzada.\\\\
 R2: El módulo 1 del sistema permite dibujar líneas de diferente longitud.\\\\
@@ -690,9 +601,5 @@ Pre-condiciones: Instalación del {\it API, Kinect}\texttrademark  conectado, ima
 \caption{Módulo 4 - Cambiar de color.}
 \label{fig:2.20}
 \end{figure}
-
-\section{Conclusiones}
-
-Al final del análisis se concluye que el trabajo terminal .......
 
 
