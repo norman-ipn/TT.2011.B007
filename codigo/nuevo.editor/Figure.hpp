@@ -1,5 +1,10 @@
-#ifndef __FIGURE_HPP__
+/*
+  archivo: Figure.hpp
+  
+  Creado por:......
+*/
 
+#ifndef __FIGURE_HPP__
 #define __FIGURE_HPP__
 
 #include "opencv2/objdetect/objdetect.hpp"
