@@ -1,0 +1,92 @@
+\BOOKMARK [0][-]{chapter.1}{Introducci\363n}{}
+\BOOKMARK [1][-]{section.1.1}{Kinect\222}{chapter.1}
+\BOOKMARK [1][-]{section.1.2}{OpenNI}{chapter.1}
+\BOOKMARK [1][-]{section.1.3}{OpenCV}{chapter.1}
+\BOOKMARK [1][-]{section.1.4}{Reconocimiento de Patrones}{chapter.1}
+\BOOKMARK [1][-]{section.1.5}{Etiquetas \(Tag\264s\)}{chapter.1}
+\BOOKMARK [2][-]{subsection.1.5.1}{reacTIVision}{section.1.5}
+\BOOKMARK [2][-]{subsection.1.5.2}{C\363digo QR}{section.1.5}
+\BOOKMARK [2][-]{subsection.1.5.3}{ARToolkit}{section.1.5}
+\BOOKMARK [1][-]{section.1.6}{Metodolog\355a}{chapter.1}
+\BOOKMARK [2][-]{subsection.1.6.1}{Paradigma}{section.1.6}
+\BOOKMARK [1][-]{section.1.7}{Objetivos}{chapter.1}
+\BOOKMARK [2][-]{subsection.1.7.1}{Problem\341tica}{section.1.7}
+\BOOKMARK [2][-]{subsection.1.7.2}{General}{section.1.7}
+\BOOKMARK [2][-]{subsection.1.7.3}{Particulares}{section.1.7}
+\BOOKMARK [1][-]{section.1.8}{Justificaci\363n}{chapter.1}
+\BOOKMARK [2][-]{subsection.1.8.1}{Estado del arte}{section.1.8}
+\BOOKMARK [0][-]{chapter.2}{An\341lisis}{}
+\BOOKMARK [1][-]{section.2.1}{M\363dulo 1: Editor b\341sico de dibujo}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.1.1}{Introducci\363n}{section.2.1}
+\BOOKMARK [2][-]{subsection.2.1.2}{Objetivo}{section.2.1}
+\BOOKMARK [2][-]{subsection.2.1.3}{An\341lisis y descripci\363n de procesos}{section.2.1}
+\BOOKMARK [1][-]{section.2.2}{M\363dulo 2: Reconocimiento de trazos a mano alzada}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.2.1}{Introducci\363n}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.2}{Objetivo}{section.2.2}
+\BOOKMARK [2][-]{subsection.2.2.3}{An\341lisis y descripci\363n de procesos}{section.2.2}
+\BOOKMARK [1][-]{section.2.3}{M\363dulo 3: Proyecci\363n sobre el \341rea de trabajo}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.3.1}{Introducci\363n}{section.2.3}
+\BOOKMARK [2][-]{subsection.2.3.2}{Objetivo}{section.2.3}
+\BOOKMARK [2][-]{subsection.2.3.3}{An\341lisis y descripci\363n de procesos}{section.2.3}
+\BOOKMARK [2][-]{subsection.2.3.4}{Mostrar trazos realizados}{section.2.3}
+\BOOKMARK [1][-]{section.2.4}{M\363dulo 4: Implementaci\363n de herramientas f\355sicas}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.4.1}{Introducci\363n}{section.2.4}
+\BOOKMARK [2][-]{subsection.2.4.2}{Objetivo}{section.2.4}
+\BOOKMARK [2][-]{subsection.2.4.3}{An\341lisis y descripci\363n de procesos}{section.2.4}
+\BOOKMARK [1][-]{section.2.5}{Estudio de Factibilidad.}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.5.1}{Factibilidad operativa}{section.2.5}
+\BOOKMARK [2][-]{subsection.2.5.2}{Factibilidad t\351cnica}{section.2.5}
+\BOOKMARK [2][-]{subsection.2.5.3}{Software actual}{section.2.5}
+\BOOKMARK [1][-]{section.2.6}{Requerimientos}{chapter.2}
+\BOOKMARK [1][-]{section.2.7}{Especificaci\363n de los Requerimientos}{chapter.2}
+\BOOKMARK [0][-]{chapter.3}{Dise\361o}{}
+\BOOKMARK [1][-]{section.3.1}{Arquitectura del Sistema}{chapter.3}
+\BOOKMARK [1][-]{section.3.2}{Diagramas Generales del Sistema}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.2.1}{Diagrama General de Casos de Uso.}{section.3.2}
+\BOOKMARK [2][-]{subsection.3.2.2}{Diagrama General de Clases.}{section.3.2}
+\BOOKMARK [2][-]{subsection.3.2.3}{Diagrama General de Secuencia.}{section.3.2}
+\BOOKMARK [2][-]{subsection.3.2.4}{Diagrama General de Estados.}{section.3.2}
+\BOOKMARK [1][-]{section.3.3}{Diagramas del M\363dulo 1}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.3.1}{Diagrama de Casos de Uso - M\363dulo 1.}{section.3.3}
+\BOOKMARK [2][-]{subsection.3.3.2}{Diagrama de clases - M\363dulo 1.}{section.3.3}
+\BOOKMARK [2][-]{subsection.3.3.3}{Diagrama de Secuencia - M\363dulo 1.}{section.3.3}
+\BOOKMARK [2][-]{subsection.3.3.4}{Diagrama de Estados - M\363dulo 1.}{section.3.3}
+\BOOKMARK [1][-]{section.3.4}{Diagramas del M\363dulo 2}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.4.1}{Diagrama de Casos de Uso - M\363dulo 2.}{section.3.4}
+\BOOKMARK [2][-]{subsection.3.4.2}{Diagrama de Clases - M\363dulo 2.}{section.3.4}
+\BOOKMARK [2][-]{subsection.3.4.3}{Diagrama de Secuencias - M\363dulo 2.}{section.3.4}
+\BOOKMARK [2][-]{subsection.3.4.4}{Diagrama de Estados - M\363dulo 2.}{section.3.4}
+\BOOKMARK [1][-]{section.3.5}{Diagramas del M\363dulo 3}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.5.1}{Diagrama de Casos de Uso - M\363dulo 3.}{section.3.5}
+\BOOKMARK [2][-]{subsection.3.5.2}{Diagrama de Secuencia - M\363dulo 3.}{section.3.5}
+\BOOKMARK [2][-]{subsection.3.5.3}{Diagrama de Estados - M\363dulo 3.}{section.3.5}
+\BOOKMARK [1][-]{section.3.6}{Diagramas del M\363dulo 4}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.6.1}{Diagrama de Casos de Uso - M\363dulo 4.}{section.3.6}
+\BOOKMARK [2][-]{subsection.3.6.2}{Diagrama de Secuencia - M\363dulo 4.}{section.3.6}
+\BOOKMARK [2][-]{subsection.3.6.3}{Diagrama de Estados - M\363dulo 4.}{section.3.6}
+\BOOKMARK [0][-]{chapter.4}{Desarrollo}{}
+\BOOKMARK [1][-]{section.4.1}{Editor de dibujo b\341sico.}{chapter.4}
+\BOOKMARK [1][-]{section.4.2}{Reconocimiento de trazos a mano alzada.}{chapter.4}
+\BOOKMARK [1][-]{section.4.3}{Implementaci\363n de herramientas f\355sicas.}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.3.1}{Elecci\363n de tag}{section.4.3}
+\BOOKMARK [2][-]{subsection.4.3.2}{Reconocimiento de Tag's}{section.4.3}
+\BOOKMARK [0][-]{chapter.5}{Pruebas}{}
+\BOOKMARK [1][-]{section.5.1}{Pruebas - M\363dulo 1: Editor b\341sico de dibujo}{chapter.5}
+\BOOKMARK [1][-]{section.5.2}{Pruebas - M\363dulo 2: Reconocimiento de trazos a mano alzada}{chapter.5}
+\BOOKMARK [1][-]{section.5.3}{Pruebas - M\363dulo 3: Proyecci\363n sobre el \341rea de trabajo}{chapter.5}
+\BOOKMARK [1][-]{section.5.4}{Pruebas - M\363dulo 4: Implementaci\363n de herramientas f\355sicas}{chapter.5}
+\BOOKMARK [0][-]{chapter.6}{Conclusiones}{}
+\BOOKMARK [1][-]{section.6.1}{Generales}{chapter.6}
+\BOOKMARK [1][-]{section.6.2}{Individuales}{chapter.6}
+\BOOKMARK [1][-]{section.6.3}{Trabajo a futuro}{chapter.6}
+\BOOKMARK [0][-]{chapter.7}{Bibliograf\355a}{}
+\BOOKMARK [0][-]{chapter.8}{Anexo. Manual de Instalaci\363n OpenNI/OpenCV}{}
+\BOOKMARK [1][-]{section.8.1}{Introducci\363n}{chapter.8}
+\BOOKMARK [1][-]{section.8.2}{Requisitos previos}{chapter.8}
+\BOOKMARK [2][-]{subsection.8.2.1}{Sistema Operativo}{section.8.2}
+\BOOKMARK [2][-]{subsection.8.2.2}{Gestor de paquetes}{section.8.2}
+\BOOKMARK [2][-]{subsection.8.2.3}{Actualizaci\363n de Repositorios}{section.8.2}
+\BOOKMARK [2][-]{subsection.8.2.4}{Instalaci\363n de Paqueteria}{section.8.2}
+\BOOKMARK [1][-]{section.8.3}{Instalaci\363n de OpenNI y OpenCv}{chapter.8}
+\BOOKMARK [2][-]{subsection.8.3.1}{Pasos para la instalaci\363n de OpenNI}{section.8.3}
+\BOOKMARK [2][-]{subsection.8.3.2}{Pasos para la Instalaci\363n de OpenCV}{section.8.3}
