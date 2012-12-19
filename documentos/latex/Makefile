@@ -14,3 +14,7 @@ clean:
 	rm documento.dvi
 	rm *.log
 	rm *.aux
+	rm *.toc
+	rm *.lof
+	rm *.out
+	rm *.lot
