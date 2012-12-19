@@ -3,8 +3,8 @@
 
 \chapter{Introducción}
 
-El presente trabajo muestra el desarrollo de un sistema {\it multi-touch} %% todas las palabras extranjeras
- para crear figuras básicas bidimensionales.
+El presente trabajo muestra el desarrollo de un sistema {\it multi-touch} 
+para crear figuras básicas bidimensionales.
 
 %% Esta parte estÃ¡ pendiente de revisar.... no sÃ© que es lo que decidieron al respecto.  --- va seguir existiendo las tags nadamas se simplicaron, el numero de ellas, ya es menor
 La interacción con el sistema contará con objetos físicos que representan herramientas para dibujar, además se cuenta con otros objetos como herramientas básicas para la edición del dibujo. \\
@@ -46,17 +46,30 @@ Además cuentan con:
 
 \section{OpenNI}
 
-Se utiliza {\it OpenNI framework (Open Source Natural Interaction)} versión $1$.$3$.$4$.$6$ que es una {\it API} desarrollada por {\it OpenNI organization},  que provee una interfaz para dispositivos que ofrecen una interfaz natural para operar los componentes del {\it middleware}\cite{OpenNI}, en nuestro sistema lo utilizamos para poder comunicar la computadora personal con {\it Kinect}\texttrademark y así utilizar de la mejor manera para lo que se diseño el dispositivo {\it Kinect}\texttrademark, que es eliminar los dispositivos físicos para controlar, en este caso, la computadora personal.\\
 
-Posee una biblioteca de código abierto para poder trabajar con casi todas las capacidades de {\it Kinect}\texttrademark en {\it Windows}, {\it Linux} y {\it Mac}.
+{\it OpenNI framework (Open Source Natural Interaction)} es una {\it API}
+desarrollada por {\it OpenNI organization}. %% Referencia?
+Brinda una interfaz para dispositivos que ofrecen una interfaz natural para operar 
+los componentes del {\it middleware}\cite{OpenNI}. 
+En el sistema, permite comunicar la computadora con el dispositivo {\it Kinect}\texttrademark
+para aprovechar sus capacidades, principalmente la de eliminar los dispositivos físicos para controlar, en este caso, la computadora personal.
+
+OpenNI poseé una biblioteca de código abierto para poder trabajar con casi todas las capacidades de {\it Kinect}\texttrademark en {\it Windows}, {\it Linux} y {\it Mac}.
+
+Se utilizó {\it OpenNI framework (Open Source Natural Interaction)} versión $1$.$3$.$4$.$6$.
 
 \section{OpenCV}
 
-{\it OpenCV (Open Source Computer Vision Library)} Es una biblioteca {\it GPL}, orientada a la computación visual en tiempo real, utilizada principalmente en el campo de la Interacción Computadora - Humano por sus siglas en inglés {\it HCI (Human Computer Interaction)} creada y soportada por {\it Intel} desde 1999, y tiene amplia documentación.\\
+{\it OpenCV (Open Source Computer Vision Library)} es una biblioteca con licencia {\it GPL}, 
+orientada a la computación visual en tiempo real, utilizada principalmente en el campo de 
+la Interacción Computadora - Humano, por sus siglas en inglés {\it HCI (Human Computer Interaction)} creada y soportada por la compañia Intel desde 1999. 
 
 Actualmente trabajamos con la versión $2$.$3$.$1$ de la librería {\it OpenCV}.\\
 
-Una de las características más importantes de {\it OpenCV} es que las funciones están totalmente optimizadas para los procesadores de arquitectura {\it Intel}. Existen versiones para diferentes arquitecturas de procesadores y para diferentes sistemas operativos\cite{Intel}.
+Una de las características más importantes de {\it OpenCV} es que las funciones están 
+optimizadas para los procesadores de arquitectura {\it Intel}. 
+Existen versiones para diferentes arquitecturas de procesadores y 
+para diferentes sistemas operativos\cite{Intel}.
 
 \section{Reconocimiento de Patrones}
 

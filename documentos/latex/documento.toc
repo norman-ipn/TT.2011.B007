@@ -1,109 +1,21 @@
 \select@language {spanish}
-\contentsline {chapter}{\numberline {1}Introducci\'on}{11}{chapter.1}
-\contentsline {section}{\numberline {1.1}Kinect\texttrademark }{11}{section.1.1}
-\contentsline {section}{\numberline {1.2}OpenNI}{12}{section.1.2}
-\contentsline {section}{\numberline {1.3}OpenCV}{12}{section.1.3}
-\contentsline {section}{\numberline {1.4}Reconocimiento de Patrones}{12}{section.1.4}
-\contentsline {section}{\numberline {1.5}Etiquetas (Tag\'{}s)}{13}{section.1.5}
-\contentsline {subsection}{\numberline {1.5.1}reacTIVision}{13}{subsection.1.5.1}
-\contentsline {subsection}{\numberline {1.5.2}C\'odigo QR}{14}{subsection.1.5.2}
-\contentsline {subsection}{\numberline {1.5.3}ARToolkit}{15}{subsection.1.5.3}
-\contentsline {section}{\numberline {1.6}Metodolog\IeC {\'\i }a}{16}{section.1.6}
-\contentsline {subsection}{\numberline {1.6.1}Paradigma}{16}{subsection.1.6.1}
-\contentsline {section}{\numberline {1.7}Objetivos}{16}{section.1.7}
-\contentsline {subsection}{\numberline {1.7.1}Problem\'atica}{16}{subsection.1.7.1}
-\contentsline {subsection}{\numberline {1.7.2}General}{16}{subsection.1.7.2}
-\contentsline {subsection}{\numberline {1.7.3}Particulares}{17}{subsection.1.7.3}
-\contentsline {section}{\numberline {1.8}Justificaci\'on}{17}{section.1.8}
-\contentsline {subsection}{\numberline {1.8.1}Estado del arte}{17}{subsection.1.8.1}
-\contentsline {subsubsection}{Hand Tracking - Kinect with OpenCV 2.2 and OpenNI}{17}{section*.4}
-\contentsline {subsubsection}{Kinect Active Projection Mapping}{18}{section*.5}
-\contentsline {subsubsection}{Aldebaran Nao Kinect Controller}{19}{section*.6}
-\contentsline {chapter}{\numberline {2}An\'alisis}{21}{chapter.2}
-\contentsline {section}{\numberline {2.1}M\'odulo 1: Editor b\'asico de dibujo}{21}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Introducci\'on}{21}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}Objetivo}{21}{subsection.2.1.2}
-\contentsline {subsection}{\numberline {2.1.3}An\'alisis y descripci\'on de procesos}{21}{subsection.2.1.3}
-\contentsline {subsubsection}{Trazo a Mano Alzada}{22}{section*.7}
-\contentsline {subsubsection}{Trazar una L\IeC {\'\i }nea recta}{22}{section*.8}
-\contentsline {subsubsection}{Trazar una Circunferencia}{22}{section*.9}
-\contentsline {subsubsection}{Trazar un Pol\IeC {\'\i }gono}{22}{section*.10}
-\contentsline {subsubsection}{Trazar una elipse}{23}{section*.11}
-\contentsline {section}{\numberline {2.2}M\'odulo 2: Reconocimiento de trazos a mano alzada}{23}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Introducci\'on}{23}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Objetivo}{23}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}An\'alisis y descripci\'on de procesos}{23}{subsection.2.2.3}
-\contentsline {subsubsection}{Integraci\'on del Kinect\texttrademark }{23}{section*.12}
-\contentsline {subsubsection}{Detecci\'on de Imagen}{24}{section*.13}
-\contentsline {subsubsection}{Reconocimiento del desplazamiento}{24}{section*.14}
-\contentsline {subsubsection}{Dibujar a mano alzada con el dedo}{24}{section*.15}
-\contentsline {section}{\numberline {2.3}M\'odulo 3: Proyecci\'on sobre el \'area de trabajo}{25}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Introducci\'on}{25}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Objetivo}{25}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}An\'alisis y descripci\'on de procesos}{25}{subsection.2.3.3}
-\contentsline {subsection}{\numberline {2.3.4}Mostrar trazos realizados}{25}{subsection.2.3.4}
-\contentsline {section}{\numberline {2.4}M\'odulo 4: Implementaci\'on de herramientas f\IeC {\'\i }sicas}{25}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Introducci\'on}{25}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}Objetivo}{25}{subsection.2.4.2}
-\contentsline {subsection}{\numberline {2.4.3}An\'alisis y descripci\'on de procesos}{25}{subsection.2.4.3}
-\contentsline {subsubsection}{Selecci\'on de herramienta de trabajo}{26}{section*.16}
-\contentsline {section}{\numberline {2.5}Estudio de Factibilidad.}{26}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}Factibilidad operativa}{26}{subsection.2.5.1}
-\contentsline {subsection}{\numberline {2.5.2}Factibilidad t\'ecnica}{26}{subsection.2.5.2}
-\contentsline {subsection}{\numberline {2.5.3}Software actual}{28}{subsection.2.5.3}
-\contentsline {subsubsection}{Comparativa de Sistemas Operativos (S.O)}{28}{section*.17}
-\contentsline {subsubsection}{Windows vs Ubuntu (Linux)}{29}{section*.18}
-\contentsline {section}{\numberline {2.6}Requerimientos}{29}{section.2.6}
-\contentsline {section}{\numberline {2.7}Especificaci\'on de los Requerimientos}{30}{section.2.7}
-\contentsline {chapter}{\numberline {3}Dise\~no}{43}{chapter.3}
-\contentsline {section}{\numberline {3.1}Arquitectura del Sistema}{43}{section.3.1}
-\contentsline {section}{\numberline {3.2}Diagramas Generales del Sistema}{44}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Diagrama General de Casos de Uso.}{44}{subsection.3.2.1}
-\contentsline {subsubsection}{Especificaci\'on de casos de uso}{45}{section*.19}
-\contentsline {subsection}{\numberline {3.2.2}Diagrama General de Clases.}{64}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Diagrama General de Secuencia.}{65}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}Diagrama General de Estados.}{66}{subsection.3.2.4}
-\contentsline {section}{\numberline {3.3}Diagramas del M\'odulo 1}{67}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Diagrama de Casos de Uso - M\'odulo 1.}{67}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Diagrama de clases - M\'odulo 1.}{68}{subsection.3.3.2}
-\contentsline {subsection}{\numberline {3.3.3}Diagrama de Secuencia - M\'odulo 1.}{69}{subsection.3.3.3}
-\contentsline {subsection}{\numberline {3.3.4}Diagrama de Estados - M\'odulo 1.}{70}{subsection.3.3.4}
-\contentsline {section}{\numberline {3.4}Diagramas del M\'odulo 2}{71}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Diagrama de Casos de Uso - M\'odulo 2.}{71}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}Diagrama de Clases - M\'odulo 2.}{72}{subsection.3.4.2}
-\contentsline {subsection}{\numberline {3.4.3}Diagrama de Secuencias - M\'odulo 2.}{73}{subsection.3.4.3}
-\contentsline {subsection}{\numberline {3.4.4}Diagrama de Estados - M\'odulo 2.}{74}{subsection.3.4.4}
-\contentsline {section}{\numberline {3.5}Diagramas del M\'odulo 3}{75}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}Diagrama de Casos de Uso - M\'odulo 3.}{75}{subsection.3.5.1}
-\contentsline {subsection}{\numberline {3.5.2}Diagrama de Secuencia - M\'odulo 3.}{76}{subsection.3.5.2}
-\contentsline {subsection}{\numberline {3.5.3}Diagrama de Estados - M\'odulo 3.}{77}{subsection.3.5.3}
-\contentsline {section}{\numberline {3.6}Diagramas del M\'odulo 4}{78}{section.3.6}
-\contentsline {subsection}{\numberline {3.6.1}Diagrama de Casos de Uso - M\'odulo 4.}{78}{subsection.3.6.1}
-\contentsline {subsection}{\numberline {3.6.2}Diagrama de Secuencia - M\'odulo 4.}{79}{subsection.3.6.2}
-\contentsline {subsection}{\numberline {3.6.3}Diagrama de Estados - M\'odulo 4.}{80}{subsection.3.6.3}
-\contentsline {chapter}{\numberline {4}Desarrollo}{81}{chapter.4}
-\contentsline {section}{\numberline {4.1}Editor de dibujo b\'asico.}{81}{section.4.1}
-\contentsline {section}{\numberline {4.2}Reconocimiento de trazos a mano alzada.}{82}{section.4.2}
-\contentsline {section}{\numberline {4.3}Implementaci\'on de herramientas f\IeC {\'\i }sicas.}{82}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Elecci\'on de tag}{82}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Reconocimiento de Tag's}{83}{subsection.4.3.2}
-\contentsline {chapter}{\numberline {5}Pruebas}{87}{chapter.5}
-\contentsline {section}{\numberline {5.1}Pruebas - M\'odulo 1: Editor b\'asico de dibujo}{87}{section.5.1}
-\contentsline {section}{\numberline {5.2}Pruebas - M\'odulo 2: Reconocimiento de trazos a mano alzada}{89}{section.5.2}
-\contentsline {section}{\numberline {5.3}Pruebas - M\'odulo 3: Proyecci\'on sobre el \'area de trabajo}{90}{section.5.3}
-\contentsline {section}{\numberline {5.4}Pruebas - M\'odulo 4: Implementaci\'on de herramientas f\IeC {\'\i }sicas}{91}{section.5.4}
-\contentsline {chapter}{\numberline {6}Conclusiones}{93}{chapter.6}
-\contentsline {section}{\numberline {6.1}Generales}{93}{section.6.1}
-\contentsline {section}{\numberline {6.2}Individuales}{93}{section.6.2}
-\contentsline {section}{\numberline {6.3}Trabajo a futuro}{94}{section.6.3}
-\contentsline {chapter}{\numberline {7}Bibliograf\IeC {\'\i }a}{95}{chapter.7}
-\contentsline {chapter}{\numberline {8}Anexo. Manual de Instalaci\'on OpenNI/OpenCV}{99}{chapter.8}
-\contentsline {section}{\numberline {8.1}Introducci\'on}{99}{section.8.1}
-\contentsline {section}{\numberline {8.2}Requisitos previos}{99}{section.8.2}
-\contentsline {subsection}{\numberline {8.2.1}Sistema Operativo}{99}{subsection.8.2.1}
-\contentsline {subsection}{\numberline {8.2.2}Gestor de paquetes}{100}{subsection.8.2.2}
-\contentsline {subsection}{\numberline {8.2.3}Actualizaci\'on de Repositorios}{100}{subsection.8.2.3}
-\contentsline {subsection}{\numberline {8.2.4}Instalaci\'on de Paqueteria}{100}{subsection.8.2.4}
-\contentsline {section}{\numberline {8.3}Instalaci\'on de OpenNI y OpenCv}{102}{section.8.3}
-\contentsline {subsection}{\numberline {8.3.1}Pasos para la instalaci\'on de OpenNI}{102}{subsection.8.3.1}
-\contentsline {subsection}{\numberline {8.3.2}Pasos para la Instalaci\'on de OpenCV}{108}{subsection.8.3.2}
+\contentsline {chapter}{\numberline {1}Introducci\'on}{7}{chapter.1}
+\contentsline {section}{\numberline {1.1}Kinect\texttrademark }{7}{section.1.1}
+\contentsline {section}{\numberline {1.2}OpenNI}{8}{section.1.2}
+\contentsline {section}{\numberline {1.3}OpenCV}{8}{section.1.3}
+\contentsline {section}{\numberline {1.4}Reconocimiento de Patrones}{8}{section.1.4}
+\contentsline {section}{\numberline {1.5}Etiquetas (Tag\'{}s)}{9}{section.1.5}
+\contentsline {subsection}{\numberline {1.5.1}reacTIVision}{9}{subsection.1.5.1}
+\contentsline {subsection}{\numberline {1.5.2}C\'odigo QR}{10}{subsection.1.5.2}
+\contentsline {subsection}{\numberline {1.5.3}ARToolkit}{11}{subsection.1.5.3}
+\contentsline {section}{\numberline {1.6}Metodolog\IeC {\'\i }a}{12}{section.1.6}
+\contentsline {subsection}{\numberline {1.6.1}Paradigma}{12}{subsection.1.6.1}
+\contentsline {section}{\numberline {1.7}Objetivos}{12}{section.1.7}
+\contentsline {subsection}{\numberline {1.7.1}Problem\'atica}{12}{subsection.1.7.1}
+\contentsline {subsection}{\numberline {1.7.2}General}{12}{subsection.1.7.2}
+\contentsline {subsection}{\numberline {1.7.3}Particulares}{13}{subsection.1.7.3}
+\contentsline {section}{\numberline {1.8}Justificaci\'on}{13}{section.1.8}
+\contentsline {subsection}{\numberline {1.8.1}Estado del arte}{13}{subsection.1.8.1}
+\contentsline {subsubsection}{Hand Tracking - Kinect with OpenCV 2.2 and OpenNI}{13}{section*.4}
+\contentsline {subsubsection}{Kinect Active Projection Mapping}{14}{section*.5}
+\contentsline {subsubsection}{Aldebaran Nao Kinect Controller}{15}{section*.6}
